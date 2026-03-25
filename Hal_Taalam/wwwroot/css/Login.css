@@ -1,0 +1,121 @@
+﻿body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fdf5ef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #fff7f0;
+    border-radius: 10px;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .logo-section img {
+        height: 80px;
+        margin-right: 20px;
+    }
+
+.quiz-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #b44a00;
+}
+
+.quiz-subtitle {
+    font-size: 14px;
+    color: #b44a00;
+    letter-spacing: 1px;
+}
+
+.form h1 {
+    color: #d56200;
+    margin-bottom: 5px;
+}
+
+.form h2 {
+    color: #994d00;
+    margin-bottom: 15px;
+}
+
+.form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #f0d5b4;
+    font-size: 16px;
+}
+
+.form button {
+    background: #d56200;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.quick-login {
+    margin-top: 20px;
+}
+
+    .quick-login button {
+        margin: 5px 5px 5px 0;
+        padding: 10px 15px;
+        border: 1px solid #d56200;
+        background: white;
+        color: #d56200;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    .quick-login p {
+        color : #994d00;
+    }
+
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #b45f00;
+            margin-top: 30px;
+        }
+
+    .footer span {
+        margin: 0 5px;
+    }
+
+.corner-badge {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: #d56200;
+    color: white;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+</style >

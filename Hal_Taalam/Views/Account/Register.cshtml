@@ -1,0 +1,83 @@
+﻿@model Hal_Taalam.ViewModel.Account.RegeisterVM
+@{
+    ViewData["Title"] = "Register";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Auth.css" asp-append-version="true">
+}
+
+<div class="auth-container">
+    <div class="auth-card register-card">
+        <div class="auth-header">
+            <div class="auth-logo">
+                <img src="~/Image/logo.jpg" alt="Hal Taalam Logo" />
+            </div>
+            <h1>Join the Adventure!</h1>
+            <p>Create your account to start playing</p>
+            <p class="arabic-text">انضم إلى المغامرة</p>
+        </div>
+
+        <form asp-action="Register" method="post" class="auth-form" asp-controller="Account">
+            <div asp-validation-summary="All" class="validation-summary"></div>
+
+            <div class="form-group">
+                <label asp-for="UserName" class="form-label">
+                    <i class="icon">👤</i>
+                    Username
+                </label>
+                <input asp-for="UserName" class="form-input" placeholder="Choose a username" />
+                <span asp-validation-for="UserName" class="field-validation"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="form-label">
+                    <i class="icon">📧</i>
+                    Email Address
+                </label>
+                <input asp-for="Email" class="form-input" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="field-validation"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="form-label">
+                    <i class="icon">🔒</i>
+                    Password
+                </label>
+                <input asp-for="Password" class="form-input" placeholder="Create a password" />
+                <span asp-validation-for="Password" class="field-validation"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="conformidPassword" class="form-label">
+                    <i class="icon">🔒</i>
+                    Confirm Password
+                </label>
+                <input asp-for="conformidPassword" class="form-input" placeholder="Confirm your password" />
+                <span asp-validation-for="conformidPassword" class="field-validation"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn-submit">
+                    <span>Create Account</span>
+                    <i class="btn-icon">🚀</i>
+                </button>
+            </div>
+        </form>
+
+        <div class="auth-footer">
+            <p>Already have an account?</p>
+            <a asp-action="Login" class="switch-auth" asp-controller="Account">Login Here</a>
+            <div class="back-link">
+                <a asp-controller="Home" asp-action="StartPage">← Back to Start</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/Auth.js" asp-append-version="true"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,202 @@
+﻿/* Main Menu Page Specific Styles */
+/* Layout styles are now in Layout.css */
+
+.menu-page-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 60px;
+    min-height: calc(100vh - 120px); /* Account for navbar and footer */
+}
+
+.menu-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(230, 115, 0, 0.2);
+    border: 2px solid #e67300;
+    min-width: 350px;
+}
+
+    .menu-container h1 {
+        color: #e67300;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(230, 115, 0, 0.1);
+    }
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn {
+    display: block;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff9900, #e67300);
+    color: white;
+    font-size: 1.3rem;
+    padding: 18px 35px;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(45deg, #e67300, #cc6600);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(230, 115, 0, 0.3);
+    }
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        transform: translateY(-2px);
+    }
+
+.btn-tertiary {
+    background-color: transparent;
+    color: #e67300;
+    border: 2px solid #e67300;
+}
+
+    .btn-tertiary:hover {
+        background-color: #e67300;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+/* Player Stats Card */
+.player-stats-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(230, 115, 0, 0.15);
+    border: 1px solid #e67300;
+    min-width: 300px;
+    max-width: 350px;
+}
+
+    .player-stats-card h3 {
+        color: #e67300;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 10px;
+    background: rgba(230, 115, 0, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(230, 115, 0, 0.2);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e67300;
+}
+
+.xp-progress-container {
+    text-align: center;
+}
+
+.xp-progress-bar {
+    width: 100%;
+    height: 12px;
+    background-color: #ffe6cc;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.xp-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff9900, #e67300);
+    width: 65%;
+    transition: width 0.3s ease;
+    border-radius: 6px;
+}
+
+.xp-progress-text {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .menu-page-content {
+        flex-direction: column;
+        gap: 30px;
+        padding: 20px 10px;
+        min-height: calc(100vh - 160px); /* Account for larger navbar on mobile */
+    }
+
+    .menu-container {
+        min-width: auto;
+        width: 100%;
+        max-width: 400px;
+        padding: 30px 20px;
+    }
+
+        .menu-container h1 {
+            font-size: 2rem;
+        }
+
+    .player-stats-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+
+    .btn-primary {
+        font-size: 1.1rem;
+        padding: 15px 30px;
+    }
+
+    .menu-page-content {
+        min-height: calc(100vh - 200px);
+    }
+}

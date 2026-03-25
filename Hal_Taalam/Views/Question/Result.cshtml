@@ -1,0 +1,135 @@
+﻿@model Hal_Taalam.ViewModel.Questions.ResultVM
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Results.css" asp-append-version="true">
+}
+
+<div class="results-container">
+    <div class="results-card">
+        <!-- Trophy/Medal Section -->
+        <div class="trophy-section">
+            @if (Model.Score == Model.Total)
+            {
+                <div class="trophy gold">🏆</div>
+                <div class="confetti"></div>
+            }
+            else if (Model.Score >= Model.Total * 0.75)
+            {
+                <div class="trophy silver">🥈</div>
+            }
+            else if (Model.Score >= Model.Total / 2)
+            {
+                <div class="trophy bronze">🥉</div>
+            }
+            else
+            {
+                <div class="trophy try-again">😅</div>
+            }
+        </div>
+
+        <!-- Results Header -->
+        <div class="results-header">
+            <h1 class="results-title">🎉 مبروك! خلصت الكويز</h1>
+            <p class="results-subtitle">Quiz Completed!</p>
+        </div>
+
+        <!-- Score Display -->
+        <div class="score-display">
+            <div class="score-circle">
+                <svg class="score-ring" viewBox="0 0 200 200">
+                    <circle class="score-ring-bg" cx="100" cy="100" r="90" />
+                    <circle class="score-ring-fill" cx="100" cy="100" r="90"
+                            style="stroke-dasharray: @(565.48 * Model.Score / Model.Total) 565.48" />
+                </svg>
+                <div class="score-content">
+                    <div class="score-number">@Model.Score</div>
+                    <div class="score-separator">/</div>
+                    <div class="score-total">@Model.Total</div>
+                </div>
+            </div>
+            <p class="score-label">Your Score</p>
+        </div>
+
+        <!-- Performance Message -->
+        <div class="performance-message">
+            @if (Model.Score == Model.Total)
+            {
+                <div class="message-card perfect">
+                    <div class="message-icon">🌟</div>
+                    <h3>إجاباتك كلها صحيحة!</h3>
+                    <p>Perfect Score! Amazing Job!</p>
+                </div>
+            }
+            else if (Model.Score >= Model.Total * 0.75)
+            {
+                <div class="message-card excellent">
+                    <div class="message-icon">🎯</div>
+                    <h3>أداء رائع جداً!</h3>
+                    <p>Excellent Performance!</p>
+                </div>
+            }
+            else if (Model.Score >= Model.Total / 2)
+            {
+                <div class="message-card good">
+                    <div class="message-icon">👍</div>
+                    <h3>أداء ممتاز!</h3>
+                    <p>Good Job! Keep Going!</p>
+                </div>
+            }
+            else
+            {
+                <div class="message-card try-again">
+                    <div class="message-icon">💪</div>
+                    <h3>محتاج تحاول تاني!</h3>
+                    <p>Don't Give Up! Try Again!</p>
+                </div>
+            }
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stat-item">
+                <div class="stat-icon">✅</div>
+                <div class="stat-value">@Model.Score</div>
+                <div class="stat-label">Correct</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">❌</div>
+                <div class="stat-value">@(Model.Total - Model.Score)</div>
+                <div class="stat-label">Wrong</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">📊</div>
+                
+                <div class="stat-label">Accuracy</div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="results-actions">
+            <a asp-controller="Question" asp-action="StartQuiz" class="btn-action btn-primary">
+                <span class="btn-icon">🔄</span>
+                <span class="btn-text">إعادة المحاولة</span>
+            </a>
+            <a asp-controller="GameMenu" asp-action="MainMenu" class="btn-action btn-secondary">
+                <span class="btn-icon">🏠</span>
+                <span class="btn-text">الرجوع للرئيسية</span>
+            </a>
+        </div>
+
+        <!-- Share Section (Optional) -->
+        <div class="share-section">
+            <p class="share-text">Share your achievement!</p>
+            <div class="share-buttons">
+                <button class="share-btn facebook">📘</button>
+                <button class="share-btn twitter">🐦</button>
+                <button class="share-btn whatsapp">💬</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/Results.js" asp-append-version="true"></script>
+}

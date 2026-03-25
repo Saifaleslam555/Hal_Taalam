@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "_HTLayout";
+}
+
+@{
+    ViewData["Title"] = "Main Menu";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/MainMenu.css" asp-append-version="true">
+}
+
+<!-- Main Menu Content -->
+<div class="menu-page-content">
+    <div class="menu-container">
+        <h1>Main Menu</h1>
+        <div class="menu-buttons">
+            <a asp-controller="GameMenu" asp-action="OpenQuiz" class="btn btn-primary">🎮 Start Game</a>
+            <a asp-controller="GameMenu" asp-action="HowToPlay" class="btn btn-secondary">📖 How To Play</a>
+            <a asp-controller="GameMenu" asp-action="Leaderboard" class="btn btn-secondary">🏆 Leaderboard</a>
+            <a asp-controller="GameMenu" asp-action="Settings" class="btn btn-tertiary">⚙️ Settings</a>
+        </div>
+    </div>
+
+    <!-- Player Stats Card (for logged in users) -->
+    <div class="player-stats-card" id="playerStatsCard" style="display: none;">
+        <h3>Your Progress</h3>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-label">Level</span>
+                <span class="stat-value" id="statsLevel">5</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">XP</span>
+                <span class="stat-value"><span id="statsCurrentXP">1300</span>/<span id="statsNextXP">2000</span></span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Games Played</span>
+                <span class="stat-value" id="statsGamesPlayed">23</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Best Score</span>
+                <span class="stat-value" id="statsBestScore">850</span>
+            </div>
+        </div>
+        <div class="xp-progress-container">
+            <div class="xp-progress-bar">
+                <div class="xp-progress-fill" id="statsXpFill"></div>
+            </div>
+            <span class="xp-progress-text">Progress to Level <span id="statsNextLevel">6</span></span>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/MainMenu.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,72 @@
+﻿@model Hal_Taalam.ViewModel.Account.LoginVM
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hal Taalam</title>
+    <link rel="stylesheet" href="~/css/Auth.css" asp-append-version="true">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <img src="~/Image/logo.jpg" alt="Hal Taalam Logo" />
+                </div>
+                <h1>Welcome Back!</h1>
+                <p>Login to continue your journey</p>
+                <p class="arabic-text">مرحباً بعودتك</p>
+            </div>
+            <form asp-action="Login" method="post" class="auth-form">
+                <div asp-validation-summary="All" class="validation-summary"></div>
+                <div class="form-group">
+                    <label asp-for="Email" class="form-label">
+                        <i class="icon">📧</i>
+                        Email Address
+                    </label>
+                    <input asp-for="Email" class="form-input" placeholder="Enter your email" />
+                    <span asp-validation-for="Email" class="field-validation"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="form-label">
+                        <i class="icon">🔒</i>
+                        Password
+                    </label>
+                    <input asp-for="Password" class="form-input" placeholder="Enter your password" />
+                    <span asp-validation-for="Password" class="field-validation"></span>
+                </div>
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input class="checkbox-input" asp-for="Remeberme" />
+                        <span class="checkbox-custom"></span>
+                        <span class="checkbox-text">Remember me</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn-submit">
+                        <span>Login</span>
+                        <i class="btn-icon">🎮</i>
+                    </button>
+                </div>
+                <div class="auth-links">
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+            </form>
+            <div class="auth-footer">
+                <p>Don't have an account?</p>
+                <a asp-action="Register" class="switch-auth">Create Account</a>
+                <div class="back-link">
+                    <a asp-controller="Home" asp-action="StartPage">← Back to Start</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/Auth.js" asp-append-version="true"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+
+@{
+    Layout = null; // No layout for start page
+    ViewData["Title"] = "Start";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Hal Taalam</title>
+    <link rel="stylesheet" href="~/css/StartPage.css" asp-append-version="true">
+</head>
+<body>
+    <div class="logo-section">
+        <img src="~/Image/logo.jpg" alt="Logo" />
+    </div>
+
+    <a asp-controller="GameMenu" asp-action="MainMenu" class="start-link">
+        <div class="start-screen">
+            <h1>Click to Start Journey</h1>
+            <p>اضغط للبدء</p>
+        </div>
+    </a>
+
+    <script src="~/js/StartPage.js" asp-append-version="true"></script>
+</body>
+</html>
