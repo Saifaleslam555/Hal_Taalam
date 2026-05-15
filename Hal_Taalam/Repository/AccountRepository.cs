@@ -1,5 +1,5 @@
-﻿using Hal_Taalam.Models;
-using Hal_Taalam.Models.DBcontext;
+﻿using Hal_Taalam.Data;
+using Hal_Taalam.Models;
 using Hal_Taalam.Repository.Interface;
 using Hal_Taalam.ViewModel.Account;
 using Microsoft.AspNetCore.Identity;
@@ -15,7 +15,9 @@ namespace Hal_Taalam.Repository
 
         //private readonly PlayerRepository playerRepository;
 
-        public AccountRepository(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager, IPlayerRepository playerRepository)
+        public AccountRepository(UserManager<ApplicationUser> userManager
+            ,SignInManager<ApplicationUser> signInManager
+            , IPlayerRepository playerRepository)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -24,13 +26,16 @@ namespace Hal_Taalam.Repository
 
         public async Task<SignInResult> Login(LoginVM loginVM)
         {
-            ApplicationUser user = await userManager.FindByEmailAsync(loginVM.Email);
+            ApplicationUser user = await userManager.FindByEmailAsync(loginVM.Email) ;
             if (user != null) 
             {
                 bool found= await userManager.CheckPasswordAsync(user, loginVM.Password);
                 if (found==true)
                 {
-                  await  signInManager.SignInAsync(user, loginVM.Remeberme);  
+                  user.RegistirationDate = DateTime.Now;
+                  await userManager.UpdateAsync(user);
+                  await  signInManager.SignInAsync(user, loginVM.Remeberme);
+                    
                   return SignInResult.Success;
                 }
             }
@@ -44,6 +49,7 @@ namespace Hal_Taalam.Repository
             //mapping
             user.UserName = regeisterVM.UserName;
             user.Email = regeisterVM.Email;
+
             //user.PasswordHash = regeisterVM.Password;
           
             //saveDB
@@ -65,6 +71,7 @@ namespace Hal_Taalam.Repository
                 player.rank = 0;
                 player.Score = 0;
                 player.ImgURL = null;
+
 
                 playerRepository.Add(player);
                 await playerRepository.SaveChangesAsync();

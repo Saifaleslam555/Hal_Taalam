@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hal_Taalam.Models
 {
@@ -22,5 +23,10 @@ namespace Hal_Taalam.Models
 
         [Required]
         public int CorrectAnswer { get; set; }
+
+        [Required]
+        [ForeignKey("Category")]
+        public int CategoryID { get; set; }
+        public Category? Category { get; set; } = null;
     }
 }

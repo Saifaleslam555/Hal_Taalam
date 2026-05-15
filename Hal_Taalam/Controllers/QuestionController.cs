@@ -5,24 +5,31 @@ using Hal_Taalam.Repository;
 using Hal_Taalam.Extensions;
 using Hal_Taalam.ViewModel.Questions;
 using Microsoft.AspNetCore.Identity;
-using Hal_Taalam.Models.DBcontext;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Hal_Taalam.Data;
 
 namespace Hal_Taalam.Controllers
 {
+    [Authorize]
     public class QuestionController : Controller
     {
         private readonly IQusetionRepository qusetionRepository;
         private readonly IPlayerRepository playerRepository;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IGameResultRepository gameResultRepository;
 
         //private readonly Question question;
 
-        public QuestionController(IQusetionRepository qusetionRepository,IPlayerRepository playerRepository,UserManager<ApplicationUser> userManager)
+        public QuestionController(IQusetionRepository qusetionRepository,
+            IPlayerRepository playerRepository,
+            UserManager<ApplicationUser> userManager,
+            IGameResultRepository gameResultRepository)
         {
             this.qusetionRepository = qusetionRepository;
             this.playerRepository = playerRepository;
             this.userManager = userManager;
+            this.gameResultRepository = gameResultRepository;
         }
 
         public IActionResult StartQuiz()
@@ -38,13 +45,13 @@ namespace Hal_Taalam.Controllers
         public IActionResult Question() 
         {
             var question = HttpContext.Session.GetOjectFromJson<List<Question>>("Questions");
-            if (question == null) 
+            if (question == null)
             {
                 return RedirectToAction(nameof(StartQuiz));
             }
-            var index=HttpContext.Session.GetInt32("index") ??0;
+            var index = HttpContext.Session.GetInt32("index") ?? 0;
 
-            if (index >= question.Count()) return RedirectToAction(nameof(Result)) ;
+            if (index >= question.Count()) return RedirectToAction(nameof(Result));
 
             var q = question[index];
 
@@ -115,6 +122,15 @@ namespace Hal_Taalam.Controllers
             resultVM.Score = Score;
 
             string userid= userManager.GetUserId(User);
+
+            var gamaResult = new GameResults();
+            gamaResult.playerId = int.Parse(userid);
+            gamaResult.score = Score ?? 0;
+            gamaResult.PlayerName = User.Identity.Name;
+            gamaResult.DatePlayed= DateTime.Now;
+            
+            gameResultRepository.Add(gamaResult);
+
 
             await playerRepository.UpdateStats(resultVM.Score,userid);
 

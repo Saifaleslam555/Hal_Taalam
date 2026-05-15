@@ -1,4 +1,4 @@
-﻿using Hal_Taalam.Models.DBcontext;
+﻿using Hal_Taalam.Data;
 using Hal_Taalam.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;

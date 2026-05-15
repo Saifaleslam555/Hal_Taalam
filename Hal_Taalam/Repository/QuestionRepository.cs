@@ -1,5 +1,5 @@
-﻿using Hal_Taalam.Models;
-using Hal_Taalam.Models.DBcontext;
+﻿using Hal_Taalam.Data;
+using Hal_Taalam.Models;
 using Hal_Taalam.Repository.Interface;
 using Hal_Taalam.ViewModel.Questions;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -16,6 +16,12 @@ namespace Hal_Taalam.Repository
             this.context = context;
         }
      
+
+
+        public void Question(Question question)
+        {
+
+        }
 
         public double CalcScore(Question question)
         {

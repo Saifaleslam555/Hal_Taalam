@@ -1,4 +1,4 @@
-﻿using Hal_Taalam.Models.DBcontext;
+﻿using Hal_Taalam.Data;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -33,6 +33,8 @@ namespace Hal_Taalam.Models
 
         [ForeignKey("UserID")]
         public ApplicationUser ApplicationUser { get; set; }
+
+        public List<GameResults> GameResults { get; set; } = new List<GameResults>();
 
 
     }

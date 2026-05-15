@@ -14,5 +14,6 @@ namespace Hal_Taalam.Repository.Interface
 
         //public string Quiz();
 
+
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hal_Taalam.Migrations
 {
     [DbContext(typeof(HalTaalamContext))]
-    [Migration("20251004133836_xp_player")]
-    partial class xp_player
+    [Migration("20260515144052_cat")]
+    partial class cat
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,27 @@ namespace Hal_Taalam.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Hal_Taalam.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category");
+                });
 
             modelBuilder.Entity("Hal_Taalam.Models.DBcontext.ApplicationUser", b =>
                 {
@@ -158,6 +179,9 @@ namespace Hal_Taalam.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("int");
+
                     b.Property<int>("CorrectAnswer")
                         .HasColumnType("int");
 
@@ -169,6 +193,8 @@ namespace Hal_Taalam.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Questions");
                 });
@@ -317,6 +343,17 @@ namespace Hal_Taalam.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
+            modelBuilder.Entity("Hal_Taalam.Models.Question", b =>
+                {
+                    b.HasOne("Hal_Taalam.Models.Category", "Category")
+                        .WithMany("Questions")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -366,6 +403,11 @@ namespace Hal_Taalam.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Hal_Taalam.Models.Category", b =>
+                {
+                    b.Navigation("Questions");
                 });
 
             modelBuilder.Entity("Hal_Taalam.Models.DBcontext.ApplicationUser", b =>

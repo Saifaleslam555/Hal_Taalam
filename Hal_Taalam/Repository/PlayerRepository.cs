@@ -1,5 +1,5 @@
-﻿using Hal_Taalam.Models;
-using Hal_Taalam.Models.DBcontext;
+﻿using Hal_Taalam.Data;
+using Hal_Taalam.Models;
 using Hal_Taalam.Repository.Interface;
 using Hal_Taalam.ViewModel.Player;
 using Microsoft.AspNetCore.Mvc;
@@ -28,18 +28,6 @@ namespace Hal_Taalam.Repository
 
         public async Task UpdatePlayer(string userid, ProfileVM profileVM) 
         {
-            //Player? player = null;
-
-            //try
-            //{
-            //     player =  context.Players.FirstOrDefault(p => p.UserID == userid);
-            //}
-            //catch (Exception ex) 
-            //{ 
-            //    ContentResult content = new ContentResult();
-            //    content.Content = ex.Message;
-            //};
-
             Player player = await context.Players.FirstOrDefaultAsync(p => p.UserID == userid);
 
             if (player != null)
@@ -76,27 +64,7 @@ namespace Hal_Taalam.Repository
             
         }
 
-        //public async Task CreatePlayer()
-        //{
-        //    using var stream= new MemoryStream();
-        //    await profileVM.imgUrl.CopyToAsync(stream);
-
-        //    Player player = new Player();
-
-
-
-        //    player.Name = profileVM.Name;
-        //    player.Age=profileVM.Age;
-        //    player.level = 0;
-        //    player.IsPlaying = true;
-        //    player.rank = 0;
-        //    player.level = 0;
-        //    player.Score = 0;
-        //    player.ImgURL = null;
-
-        //    Add(player);
-        //    SaveChangesAsync();
-
+       
     }
 
         
