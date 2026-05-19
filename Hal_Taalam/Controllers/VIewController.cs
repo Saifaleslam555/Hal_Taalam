@@ -1,6 +1,7 @@
 ﻿using Hal_Taalam.Data;
 using Hal_Taalam.Models;
 using Hal_Taalam.Repository.Interface;
+using Hal_Taalam.Repository.UnitOfWork;
 using Hal_Taalam.ViewModel.ShowPlayerInfo;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,12 +11,12 @@ namespace Hal_Taalam.Controllers
 {
     public class VIewController : Controller
     {
-        private readonly IPlayerRepository playerRepository;
+        private readonly IUnitOfWork unitOfWork;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public VIewController(IPlayerRepository playerRepository,UserManager<ApplicationUser> userManager)
+        public VIewController(IUnitOfWork unitOfWork,UserManager<ApplicationUser> userManager)
         {
-            this.playerRepository = playerRepository;
+            this.unitOfWork = unitOfWork;
             this.userManager = userManager;
         }
 
@@ -26,7 +27,7 @@ namespace Hal_Taalam.Controllers
 
             var user = await userManager.GetUserAsync(User);
             
-            Player player =  playerRepository.GetById(user.Id);
+            Player player =  await unitOfWork.Player.GetById(user.Id);
 
             ShowPlayerInfoVM showPlayerInfoVM = new ShowPlayerInfoVM();
 

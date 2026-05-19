@@ -36,7 +36,7 @@ namespace Hal_Taalam.Service
                     return false;
                 }
 
-                _unitOfWork.Question.Add(newQuestion);
+                await _unitOfWork.Question.Add(newQuestion);
                 await _unitOfWork.Commit();
 
                 return true;
@@ -64,7 +64,10 @@ namespace Hal_Taalam.Service
 
         public List<QuestionListVM> GetQuestionsList()
         {
-            List<Question> list = _unitOfWork.Question.GetAll().Take(10).ToList();
+            List<Question> list = _unitOfWork.Question.GetAll()
+                .OrderByDescending(q => q.Id)
+                .Take(10)
+                .ToList();
 
             var questionViewModels = list.Select(q => new QuestionListVM
             {

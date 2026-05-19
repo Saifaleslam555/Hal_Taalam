@@ -61,9 +61,9 @@ namespace Hal_Taalam.Repository
             return query.FirstOrDefault(expression);
         }
 
-        public void Add(T entity)
+        public async Task Add(T entity)
         {
-           _dbSet.Add(entity);
+             await _dbSet.AddAsync(entity);
         }
 
         public void DeleteById(T entity)
@@ -81,19 +81,19 @@ namespace Hal_Taalam.Repository
             _dbSet.Update(entity);
         }
 
-        public IEnumerable<T> GetAll() 
+        public async Task<IEnumerable<T>> GetAll()
         {
-           return _dbSet.ToList();
+            return await _dbSet.ToListAsync();
         }
 
-        public int GetCount()
+        public async Task<int> GetCount()
         {
-            return _dbSet.Count();
+           return await _dbSet.CountAsync();
         }
 
-        public T GetById(object id)
+        public async Task<T> GetById(object id)
         {
-            return _dbSet.Find(id);
+             return await _dbSet.FindAsync(id);
         }
 
     }

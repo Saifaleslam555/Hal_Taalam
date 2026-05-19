@@ -14,24 +14,24 @@ namespace Hal_Taalam.Service
             _unitOfWork = unitOfWork;
         }
 
-        public int CountCategories()
+        public async Task<int> CountCategories()
         {
-          return _unitOfWork.Category.GetCount();
+          return await _unitOfWork.Category.GetCount();
         }
 
-        public int CountGames()
+        public async Task<int> CountGames()
         {
-            return _unitOfWork.GameResult.GetCount();
+            return await _unitOfWork.GameResult.GetCount();
         }
 
-        public int CountPlayers()
+        public async Task<int> CountPlayers()
         {
-            return _unitOfWork.Player.GetCount();
+            return await _unitOfWork.Player.GetCount();
         }
 
-        public int CountQuestions()
+        public async Task<int> CountQuestions()
         {
-            return _unitOfWork.Question.GetCount();
+            return await _unitOfWork.Question.GetCount();
         }
 
         public int CountQuestionsByCategory(int categoryID)

@@ -11,11 +11,11 @@ namespace Hal_Taalam.Repository.Interface
 
         T? Find(Expression<Func<T, bool>> expression, bool tracked = true);
 
-        T GetById(object id);
-        void Add(T entity);
+        Task<T> GetById(object id);
+        Task Add(T entity);
         void Update(T entity);
         void DeleteById(T entity);
-        int GetCount();
+        Task<int> GetCount();
         Task SaveChangesAsync();
 
     }

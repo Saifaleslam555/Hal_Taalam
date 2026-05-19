@@ -1,7 +1,11 @@
 ﻿@model Hal_Taalam.ViewModel.Admin.CreateQuestionVM
 
 @{
-    ViewData["Title"] = "Add New Question";
+    // بنقرأ الـ ID من الرابط لمعرفة إذا كنا في حالة تعديل أو إضافة
+    var routeId = ViewContext.RouteData.Values["id"];
+    bool isEditMode = routeId != null;
+
+    ViewData["Title"] = isEditMode ? "Edit Question" : "Add New Question";
 }
 
 @section Styles {
@@ -11,11 +15,17 @@
 <div class="questions-container">
     <div class="admin-card">
         <div class="card-header-flex">
-            <h2 class="card-title">Add New Question</h2>
+            <h2 class="card-title">@(isEditMode ? "Edit Question" : "Add New Question")</h2>
             <a asp-action="QuestionList" class="btn btn-outline">⬅️ Back to List</a>
         </div>
 
-        <form asp-controller="Admin" asp-action="CreationQuestion" method="post">
+        <form asp-controller="Admin" asp-action="@(isEditMode ? "UpdateQuestion" : "CreationQuestion")" method="post">
+
+            @if (isEditMode)
+            {
+                <input type="hidden" name="QuestionId" value="@routeId" />
+            }
+
             <div class="form-group">
                 <label class="form-label">Question Text</label>
                 <textarea asp-for="Question" class="form-control" rows="3" placeholder="اكتب السؤال هنا..." required></textarea>
@@ -82,7 +92,7 @@
 
             <div style="margin-top: 30px; text-align: right;">
                 <button type="submit" class="btn btn-primary" style="padding: 12px 30px; font-size: 1.1em;">
-                    💾 Save Question
+                    @(isEditMode ? "🆙 Update Question" : "💾 Save Question")
                 </button>
             </div>
         </form>

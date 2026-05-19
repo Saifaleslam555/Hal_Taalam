@@ -21,16 +21,16 @@ namespace Hal_Taalam.Controllers
 
 
 
-        public IActionResult AdminDashboard(AdminDashboardVM adminDashboardVM)
+        public async Task<IActionResult> AdminDashboard(AdminDashboardVM adminDashboardVM)
         {
             adminDashboardVM = new AdminDashboardVM
             {
-                PlayersCount = adminDashboardService.CountPlayers(),
+                PlayersCount = await adminDashboardService.CountPlayers(),
                 RecentPlayers = adminDashboardService.RecentPlayers(),
-                CategoriesCount = adminDashboardService.CountCategories(),
-                GamesCount = adminDashboardService.CountGames(),
+                CategoriesCount = await adminDashboardService.CountCategories(),
+                GamesCount = await adminDashboardService.CountGames(),
                 IsDatabaseOnline = adminDashboardService.DatabaseStatus(),
-                QuestionsCount=adminDashboardService.CountQuestions()
+                QuestionsCount=await adminDashboardService.CountQuestions()
             };
 
             return View("AdminDashboard", adminDashboardVM);
@@ -57,6 +57,8 @@ namespace Hal_Taalam.Controllers
         {
             await adminQuestionsService.UpdateQuestion(QuestionId, createQuestionVM);
 
+
+
             return RedirectToAction("QuestionList");
         }
 
@@ -64,6 +66,15 @@ namespace Hal_Taalam.Controllers
         {
             await adminQuestionsService.DeleteQuestion(id);
             return RedirectToAction("QuestionList");
+        }
+
+        public IActionResult Users()
+        {
+            return View();
+        }  
+        public IActionResult Reporst()
+        {
+            return View();
         }
     }
 }
