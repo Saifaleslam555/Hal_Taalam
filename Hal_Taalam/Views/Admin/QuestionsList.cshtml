@@ -1,0 +1,152 @@
+﻿@model IEnumerable<Hal_Taalam.ViewModel.Admin.QuestionListVM>
+
+@{
+    ViewData["Title"] = "Manage Questions";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/AdminQuestions.css" asp-append-version="true">
+}
+
+<div class="questions-container">
+    <div class="admin-card">
+        <div class="card-header-flex">
+            <div>
+                <h2 class="card-title">Manage Questions</h2>
+                <p style="color: var(--text-muted); margin-top: 5px;">إدارة الأسئلة المتاحة في النظام</p>
+            </div>
+            <div>
+                <a asp-action="AddQuestion" class="btn btn-primary">
+                    <span>➕</span> Add New Question
+                </a>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Question</th>
+                        <th>Category</th>
+                        <th>Level</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>#@item.Id</td>
+                                <td style="color: var(--text-dark); font-weight: 500;">@item.QuestionText</td>
+                                <td>@item.CategoryID</td>
+                                <td><span style="background-color: var(--bg-cream); padding: 4px 8px; border-radius: 4px; color: var(--primary-orange); font-size: 0.9em;">Level @item.Level</span></td>
+                                <td>
+                                    <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.9em;"
+                                            data-id="@item.Id"
+                                            data-question="@item.QuestionText"
+                                            data-a1="@item.Answer1"
+                                            data-a2="@item.Answer2"
+                                            data-a3="@item.Answer3"
+                                            data-a4="@item.Answer4"
+                                            data-correct="@item.CorrectAnswer"
+                                            data-category="@item.CategoryID"
+                                            data-level="@item.Level"
+                                            onclick="openEditModal(this)">
+                                        ✏️ Edit
+                                    </button>
+
+                                    <button onclick="confirmDelete(@item.Id)" class="btn btn-danger" style="padding: 6px 12px; font-size: 0.9em;">🗑️ Delete</button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 30px;">لا يوجد أسئلة مضافة حتى الآن.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="questionModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle" class="card-title mb-4" style="margin-bottom: 20px;">Add New Question</h2>
+
+        <form id="questionForm" method="post" action="/Admin/CreateQuestion">
+            <input type="hidden" id="QuestionId" name="QuestionId" value="0" />
+
+            <div class="form-group">
+                <label class="form-label">Question Text</label>
+                <textarea id="QuestionText" name="Question" class="form-control" rows="2" required></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Answer 1</label>
+                        <input type="text" id="Answer1" name="Answer1" class="form-control" required />
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Answer 2</label>
+                        <input type="text" id="Answer2" name="Answer2" class="form-control" required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Answer 3</label>
+                        <input type="text" id="Answer3" name="Answer3" class="form-control" required />
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Answer 4</label>
+                        <input type="text" id="Answer4" name="Answer4" class="form-control" required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Correct Answer (1-4)</label>
+                        <input type="number" id="CorrectAnswer" name="CorrectAnswer" min="1" max="4" class="form-control" required />
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Level</label>
+                        <input type="number" id="Level" name="Level" min="1" class="form-control" required />
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Category ID</label>
+                        <input type="number" id="Category" name="Category" class="form-control" required />
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px; text-align: right;">
+                <button type="button" class="btn btn-outline" onclick="closeModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="btnSubmit">💾 Save Question</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/AdminQuestions.js" asp-append-version="true"></script>
+}

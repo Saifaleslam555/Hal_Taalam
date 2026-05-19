@@ -85,7 +85,7 @@ namespace Hal_Taalam.Controllers
 
             var CurrentQuestion=question[(int)index];
 
-            if (selectedAnswer == CurrentQuestion.CorrectAnswer)
+            if (selectedAnswer == (int)CurrentQuestion.CorrectAnswer)
             {
                 score++;
                 HttpContext.Session.SetInt32("Score", score);

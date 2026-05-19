@@ -26,7 +26,7 @@ namespace Hal_Taalam.Controllers
 
             var user = await userManager.GetUserAsync(User);
             
-            Player player = await playerRepository.GetByUserID(user.Id);
+            Player player =  playerRepository.GetById(user.Id);
 
             ShowPlayerInfoVM showPlayerInfoVM = new ShowPlayerInfoVM();
 

@@ -1,4 +1,6 @@
-﻿namespace Hal_Taalam.ViewModel.Questions
+﻿using Hal_Taalam.Enums;
+
+namespace Hal_Taalam.ViewModel.Questions
 {
     public class QuestionVM
     {
@@ -10,6 +12,6 @@
         public string answer3 { get; set; }
         public string answer4 { get; set; }
 
-        public int correctAnswer { get; set; }
+        public CorrectAnswerOption correctAnswer { get; set; }
     }
 }

@@ -1,0 +1,90 @@
+﻿@model Hal_Taalam.ViewModel.Admin.CreateQuestionVM
+
+@{
+    ViewData["Title"] = "Add New Question";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/AdminQuestions.css" asp-append-version="true">
+}
+
+<div class="questions-container">
+    <div class="admin-card">
+        <div class="card-header-flex">
+            <h2 class="card-title">Add New Question</h2>
+            <a asp-action="QuestionList" class="btn btn-outline">⬅️ Back to List</a>
+        </div>
+
+        <form asp-controller="Admin" asp-action="CreationQuestion" method="post">
+            <div class="form-group">
+                <label class="form-label">Question Text</label>
+                <textarea asp-for="Question" class="form-control" rows="3" placeholder="اكتب السؤال هنا..." required></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Answer 1</label>
+                        <input asp-for="Answer1" class="form-control" placeholder="الإجابة الأولى" required />
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Answer 2</label>
+                        <input asp-for="Answer2" class="form-control" placeholder="الإجابة الثانية" required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Answer 3</label>
+                        <input asp-for="Answer3" class="form-control" placeholder="الإجابة الثالثة" required />
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Answer 4</label>
+                        <input asp-for="Answer4" class="form-control" placeholder="الإجابة الرابعة" required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Correct Answer</label>
+                        <select asp-for="CorrectAnswer" asp-items="Html.GetEnumSelectList<Hal_Taalam.Enums.CorrectAnswerOption>()" class="form-control" required>
+                            <option value="" disabled selected>-- حدد الإجابة الصحيحة --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Level</label>
+                        <select asp-for="Level" asp-items="Html.GetEnumSelectList<Hal_Taalam.Enums.QuestionLevel>()" class="form-control" required>
+                            <option value="" disabled selected>-- اختر المستوى --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select asp-for="Category" asp-items="Html.GetEnumSelectList<Hal_Taalam.Enums.CategoryOption>()" class="form-control" required>
+                            <option value="" disabled selected>-- اختر القسم --</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; text-align: right;">
+                <button type="submit" class="btn btn-primary" style="padding: 12px 30px; font-size: 1.1em;">
+                    💾 Save Question
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

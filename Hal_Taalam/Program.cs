@@ -1,6 +1,9 @@
 using Hal_Taalam.Data;
 using Hal_Taalam.Repository;
 using Hal_Taalam.Repository.Interface;
+using Hal_Taalam.Repository.UnitOfWork;
+using Hal_Taalam.Service;
+using Hal_Taalam.Service.IService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -28,10 +31,15 @@ namespace Hal_Taalam
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddScoped<IQusetionRepository, QuestionRepository>();
-            builder.Services.AddScoped<IAccountRepository, AccountRepository>();
-            builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
+            //builder.Services.AddScoped<IQusetionRepository, QuestionRepository>();
+            //builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
 
+            builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+            builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+
+            //service
+            builder.Services.AddScoped<IAdminDashboardService, AdminDashboardService>();
+            builder.Services.AddScoped<IAdminQuestionsService, AdminQuestionsService>();
 
             builder.Services.AddDistributedMemoryCache();
 

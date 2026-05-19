@@ -10,11 +10,20 @@
     <link rel="stylesheet" href="~/css/MainMenu.css" asp-append-version="true">
 }
 
-<!-- Main Menu Content -->
 <div class="menu-page-content">
     <div class="menu-container">
         <h1>Main Menu</h1>
         <div class="menu-buttons">
+
+            @* ======= التعديل هنا: زرار الأدمين يظهر فقط لو الرول Admin ======= *@
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <a asp-controller="Admin" asp-action="AdminDashboard" class="btn btn-primary" style="background-color: var(--primary-red, #dc3545); border-color: #dc3545;">
+                    🛡️ Admin Dashboard
+                </a>
+            }
+            @* ================================================================ *@
+
             <a asp-controller="GameMenu" asp-action="OpenQuiz" class="btn btn-primary">🎮 Start Game</a>
             <a asp-controller="GameMenu" asp-action="HowToPlay" class="btn btn-secondary">📖 How To Play</a>
             <a asp-controller="GameMenu" asp-action="Leaderboard" class="btn btn-secondary">🏆 Leaderboard</a>
@@ -22,7 +31,6 @@
         </div>
     </div>
 
-    <!-- Player Stats Card (for logged in users) -->
     <div class="player-stats-card" id="playerStatsCard" style="display: none;">
         <h3>Your Progress</h3>
         <div class="stats-grid">

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Hal_Taalam.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hal_Taalam.Models
@@ -10,19 +11,19 @@ namespace Hal_Taalam.Models
         public string question { get; set; }
         
         [Required]
-        public int Level { get; set; }
+        public QuestionLevel Level { get; set; }
 
         [Required]
-        public string Answer1 { get; set; }
+        public string Answer1 { get; set; } = string.Empty;
         [Required]
-        public string Answer2 { get; set; }
+        public string Answer2 { get; set; }=string.Empty;
         [Required]
-        public string Answer3 { get; set; }
+        public string Answer3 { get; set; }= string.Empty;
         [Required]
-        public string Answer4 { get; set; }
+        public string Answer4 { get; set; } = string.Empty;
 
         [Required]
-        public int CorrectAnswer { get; set; }
+        public CorrectAnswerOption CorrectAnswer { get; set; }
 
         [Required]
         [ForeignKey("Category")]

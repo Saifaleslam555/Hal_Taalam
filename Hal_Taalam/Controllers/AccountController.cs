@@ -1,5 +1,7 @@
-﻿using Hal_Taalam.Repository.Interface;
+﻿using Hal_Taalam.Data;
+using Hal_Taalam.Repository.Interface;
 using Hal_Taalam.ViewModel.Account;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -19,7 +21,41 @@ namespace Hal_Taalam.Controllers
         {
             return View("Register");
         }
-        
+       
+        //[HttpGet]
+        //public async Task<IActionResult> CreateFirstAdmin(
+        //    [FromServices] UserManager<ApplicationUser> userManager, 
+        //    [FromServices] RoleManager<IdentityRole> roleManager)
+        //{
+        //    if (!await roleManager.RoleExistsAsync("Admin"))
+        //    {
+        //        await roleManager.CreateAsync(new IdentityRole("Admin"));
+        //    }
+
+        //    var adminUser = await userManager.FindByEmailAsync("admin@haltaalam.com");
+        //    if (adminUser == null)
+        //    {
+        //        adminUser = new ApplicationUser
+        //        {
+        //            UserName = "admin@haltaalam.com",
+        //            Email = "admin@haltaalam.com",
+        //            EmailConfirmed = true
+        //        };
+
+        //        var result = await userManager.CreateAsync(adminUser, "Admin@123456");
+
+        //        if (result.Succeeded)
+        //        {
+        //            await userManager.AddToRoleAsync(adminUser, "Admin");
+        //            return Content("✅ تم إنشاء حساب الأدمين بنجاح! يمكنك تسجيل الدخول الآن.");
+        //        }
+
+        //        return Content("❌ حدث خطأ: " + string.Join(", ", result.Errors.Select(e => e.Description)));
+        //    }
+
+        //    return Content("⚠️ حساب الأدمين موجود بالفعل في قاعدة البيانات!");
+        //}
+
         [HttpPost]
         public async Task<IActionResult> Register(RegeisterVM regeisterVM)
         {

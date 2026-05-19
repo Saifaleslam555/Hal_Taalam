@@ -1,6 +1,7 @@
 ﻿using Hal_Taalam.Data;
 using Hal_Taalam.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Hal_Taalam.Repository
@@ -14,6 +15,50 @@ namespace Hal_Taalam.Repository
         {
             this.context = context;
             _dbSet=context.Set<T>();
+        }
+
+        public IQueryable<T> GetAll(Expression<Func<T, bool>>? expression = null,
+            bool tracked = true,
+            params Expression<Func<T, object>>[] inculdeProp)
+        {
+            IQueryable<T> query = _dbSet;
+
+
+            if (inculdeProp != null && inculdeProp.Length > 0)
+            {
+                foreach (var item in inculdeProp)
+                {
+                    query = query.Include(item);
+                }
+
+            }
+            if (expression != null)
+            {
+                query = query.Where(expression);
+            }
+            if (!tracked)
+            {
+                query = query.AsNoTracking();
+            }
+            return query;
+
+        }
+
+        public T? GetOne(Expression<Func<T, bool>>? expression = null,
+            bool tracked = true,
+            params Expression<Func<T, object>>[] inculdeProp)
+        {
+            return GetAll(expression, tracked, inculdeProp).FirstOrDefault();
+        }
+
+        public T? Find(Expression<Func<T, bool>> expression, bool tracked = true)
+        {
+            var query = _dbSet.AsQueryable();
+
+            if (!tracked)
+                query = query.AsNoTracking();
+
+            return query.FirstOrDefault(expression);
         }
 
         public void Add(T entity)
@@ -36,20 +81,14 @@ namespace Hal_Taalam.Repository
             _dbSet.Update(entity);
         }
 
-        //Task<T> IGenericRepository<T>.Add(T entity)
-        //{
-        //     context.Set<T>().Add(entity);
-
-        //}
-
-        //Task<T> IGenericRepository<T>.DeleteById(Guid id)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public IEnumerable<T> GetAll() 
         {
            return _dbSet.ToList();
+        }
+
+        public int GetCount()
+        {
+            return _dbSet.Count();
         }
 
         public T GetById(object id)
@@ -57,19 +96,5 @@ namespace Hal_Taalam.Repository
             return _dbSet.Find(id);
         }
 
-        // Task<T> IGenericRepository<T>.GetById(Guid id)
-        //{
-        //    return _dbSet.FirstOrDefault(e=>e.Id==id); 
-        //}
-
-        //Task<T> IGenericRepository<T>.SaveChangesAsync()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //Task<T> IGenericRepository<T>.Update(T entity)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

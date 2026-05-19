@@ -2,6 +2,7 @@
 using Hal_Taalam.Models;
 using Hal_Taalam.Repository;
 using Hal_Taalam.Repository.Interface;
+using Hal_Taalam.Repository.UnitOfWork;
 using Hal_Taalam.ViewModel.ShowPlayerInfo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -13,18 +14,24 @@ namespace Hal_Taalam.Controllers
     public class GameMenuController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IPlayerRepository playerRepository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public GameMenuController(UserManager<ApplicationUser>userManager,IPlayerRepository playerRepository)
+        public GameMenuController(UserManager<ApplicationUser>userManager,IUnitOfWork unitOfWork)
         {
             this.userManager = userManager;
-            this.playerRepository = playerRepository;
+            this.unitOfWork = unitOfWork;
         }
 
         public IActionResult StartPage()
         {
             
             return View();
+        }
+
+        [Authorize(Roles ="Admin")]
+        public IActionResult AdminDashBoard() { 
+        
+             return View("AdminDashboard");
         }
 
         [Authorize]

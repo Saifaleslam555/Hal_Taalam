@@ -1,6 +1,7 @@
 ﻿using Hal_Taalam.Data;
 using Hal_Taalam.Models;
 using Hal_Taalam.Repository.Interface;
+using Hal_Taalam.Repository.UnitOfWork;
 using Hal_Taalam.ViewModel.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -11,17 +12,19 @@ namespace Hal_Taalam.Repository
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
-        private readonly IPlayerRepository playerRepository;
+        private readonly IUnitOfWork unitOfWork;
+
+        //private readonly IPlayerRepository playerRepository;
 
         //private readonly PlayerRepository playerRepository;
 
         public AccountRepository(UserManager<ApplicationUser> userManager
             ,SignInManager<ApplicationUser> signInManager
-            , IPlayerRepository playerRepository)
+            , IUnitOfWork unitOfWork)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-            this.playerRepository = playerRepository;
+            this.unitOfWork = unitOfWork;
         }
 
         public async Task<SignInResult> Login(LoginVM loginVM)
@@ -73,8 +76,8 @@ namespace Hal_Taalam.Repository
                 player.ImgURL = null;
 
 
-                playerRepository.Add(player);
-                await playerRepository.SaveChangesAsync();
+                unitOfWork.Player.Add(player);
+                await unitOfWork.Commit();
 
                 //playerRepository.MakePlayer(user.Id);
 

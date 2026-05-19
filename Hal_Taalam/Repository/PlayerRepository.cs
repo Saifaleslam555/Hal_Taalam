@@ -21,10 +21,10 @@ namespace Hal_Taalam.Repository
             }
         }
 
-        public Task<Player> GetByUserID(string userid)
-        {
-            return context.Players.FirstAsync(p => p.UserID == userid);
-        }
+        //public Task<Player> GetByUserID(string userid)
+        //{
+        //    return context.Players.FirstAsync(p => p.UserID == userid);
+        //}
 
         public async Task UpdatePlayer(string userid, ProfileVM profileVM) 
         {
@@ -64,7 +64,15 @@ namespace Hal_Taalam.Repository
             
         }
 
-       
+        public List<Player> RecentPlayers()
+        {
+            return context.Users.OrderByDescending(r => r.RegistirationDate).Take(5).Select(u => new Player
+            {
+                Name = u.UserName,
+
+            }).ToList();
+        }
+
     }
 
         
