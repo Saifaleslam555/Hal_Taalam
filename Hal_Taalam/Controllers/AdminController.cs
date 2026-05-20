@@ -57,8 +57,6 @@ namespace Hal_Taalam.Controllers
         {
             await adminQuestionsService.UpdateQuestion(QuestionId, createQuestionVM);
 
-
-
             return RedirectToAction("QuestionList");
         }
 

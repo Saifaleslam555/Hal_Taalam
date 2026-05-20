@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<Hal_Taalam.ViewModel.Admin.QuestionListVM>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> localizer
 
 @{
     ViewData["Title"] = localizer["ManageQuestions"].Value;
@@ -42,23 +44,22 @@
                                 <td>#@item.Id</td>
                                 <td style="color: var(--text-dark); font-weight: 500;">@item.QuestionText</td>
                                 <td>@item.CategoryID</td>
-                                <td><span style="background-color: var(--bg-cream); padding: 4px 8px; border-radius: 4px; color: var(--primary-orange); font-size: 0.9em;">@localizer["Level"] @item.Level</span></td>
                                 <td>
-                                    <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.9em;"
-                                            data-id="@item.Id"
-                                            data-question="@item.QuestionText"
-                                            data-a1="@item.Answer1"
-                                            data-a2="@item.Answer2"
-                                            data-a3="@item.Answer3"
-                                            data-a4="@item.Answer4"
-                                            data-correct="@item.CorrectAnswer"
-                                            data-category="@item.CategoryID"
-                                            data-level="@item.Level"
-                                            onclick="openEditModal(this)">
+                                    <span style="background-color: var(--bg-cream); padding: 4px 8px; border-radius: 4px; color: var(--primary-orange); font-size: 0.9em;">
+                                        @localizer["Level"] @item.Level
+                                    </span>
+                                </td>
+                                <td>
+                                    <a asp-action="UpdateQuestion" asp-route-id="@item.Id" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.9em; text-decoration: none; display: inline-block;">
                                         ✏️ @localizer["EditBtn"]
-                                    </button>
+                                    </a>
 
-                                    <button onclick="confirmDelete(@item.Id)" class="btn btn-danger" style="padding: 6px 12px; font-size: 0.9em;">🗑️ @localizer["DeleteBtn"]</button>
+                                    <form asp-action="DeleteQuestion" asp-route-id="@item.Id" method="post" style="display:inline;">
+                                        <button type="submit" class="btn btn-danger" style="padding: 6px 12px; font-size: 0.9em;"
+                                                onclick="return confirm('هل أنت متأكد من حذف هذا السؤال؟')">
+                                            🗑️ @localizer["DeleteBtn"]
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         }
@@ -75,27 +76,7 @@
     </div>
 </div>
 
-<div id="questionModal" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <h2 id="modalTitle" class="card-title mb-4" style="margin-bottom: 20px;">@localizer["AddNewQuestionBtn"]</h2>
-
-        <form id="questionForm" method="post" action="/Admin/CreateQuestion">
-            <input type="hidden" id="QuestionId" name="QuestionId" value="0" />
-
-            <div class="form-group">
-                <label class="form-label">@localizer["QuestionText"]</label>
-                <textarea id="QuestionText" name="Question" class="form-control" rows="2" required></textarea>
-            </div>
-
-            <div style="margin-top: 20px; text-align: right;">
-                <button type="button" class="btn btn-outline" onclick="closeModal()">@localizer["CancelBtn"]</button>
-                <button type="submit" class="btn btn-primary" id="btnSubmit">💾 @localizer["SaveQuestionBtn"]</button>
-            </div>
-        </form>
-    </div>
-</div>
-
 @section Scripts {
+    @* مش محتاجين AdminQuestions.js إلا لو عندك فيه وظائف تانية غير المودال *@
     <script src="~/js/AdminQuestions.js" asp-append-version="true"></script>
 }

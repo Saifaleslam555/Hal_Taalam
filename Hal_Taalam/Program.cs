@@ -96,6 +96,12 @@ namespace Hal_Taalam
            
             app.UseSession();
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<HalTaalamContext>();
+                db.Database.Migrate();
+            }
+
             app.UseRequestLocalization();
 
             app.MapControllerRoute(
