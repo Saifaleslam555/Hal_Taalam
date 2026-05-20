@@ -3,6 +3,7 @@ using Hal_Taalam.Models;
 using Hal_Taalam.Repository.UnitOfWork;
 using Hal_Taalam.Service.IService;
 using Hal_Taalam.ViewModel.Admin;
+using Hal_Taalam.ViewModel.Questions;
 
 namespace Hal_Taalam.Service
 {
@@ -110,6 +111,24 @@ namespace Hal_Taalam.Service
                 
                 return true;
             } catch (Exception ex) { return false; }
+        }
+
+        public async Task<CreateQuestionVM> GetQuestionById(int id)
+        {
+            var question = _unitOfWork.Question.GetOne(q => q.Id == id);
+            if (question == null) return null;
+
+            return new CreateQuestionVM
+            {
+                Question = question.question,
+                Answer1 = question.Answer1,
+                Answer2 = question.Answer2,
+                Answer3 = question.Answer3,
+                Answer4 = question.Answer4,
+                CorrectAnswer = question.CorrectAnswer,
+                Category = (CategoryOption)question.CategoryID,
+                Level = question.Level
+            };
         }
     }
 }

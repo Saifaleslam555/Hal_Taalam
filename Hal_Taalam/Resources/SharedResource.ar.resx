@@ -196,4 +196,47 @@
 	<data name="RetryQuiz" xml:space="preserve"><value>إعادة الاختبار</value></data>
 	<data name="BackToHome" xml:space="preserve"><value>الصفحة الرئيسية</value></data>
 	<data name="ShareAchievement" xml:space="preserve"><value>شارك إنجازك مع أصدقائك</value></data>
+	<data name="AddNewQuestionTitle" xml:space="preserve"><value>إضافة سؤال جديد</value></data>
+<data name="QuestionTextLabel" xml:space="preserve"><value>نص السؤال</value></data>
+<data name="WriteQuestionPlaceholder" xml:space="preserve"><value>اكتب السؤال هنا...</value></data>
+<data name="Answer1Label" xml:space="preserve"><value>الإجابة الأولى</value></data>
+<data name="Answer2Label" xml:space="preserve"><value>الإجابة الثانية</value></data>
+<data name="Answer3Label" xml:space="preserve"><value>الإجابة الثالثة</value></data>
+<data name="Answer4Label" xml:space="preserve"><value>الإجابة الرابعة</value></data>
+<data name="CorrectAnswerLabel" xml:space="preserve"><value>الإجابة الصحيحة</value></data>
+<data name="SelectCorrectAnswerOpt" xml:space="preserve"><value>-- اختر الإجابة الصحيحة --</value></data>
+<data name="LevelLabel" xml:space="preserve"><value>المستوى</value></data>
+<data name="SelectLevelOpt" xml:space="preserve"><value>-- اختر المستوى --</value></data>
+<data name="CategoryLabel" xml:space="preserve"><value>التصنيف</value></data>
+<data name="SelectCategoryOpt" xml:space="preserve"><value>-- اختر التصنيف --</value></data>
+<data name="SaveQuestionBtnText" xml:space="preserve"><value>حفظ السؤال</value></data>
+	<data name="AddNewQuestion" xml:space="preserve"><value>إضافة سؤال جديد</value></data>
+	<data name="BackToList" xml:space="preserve"><value>العودة للقائمة</value></data>
+	<data name="QuestionText" xml:space="preserve"><value>نص السؤال</value></data>
+	<data name="WriteQuestionHere" xml:space="preserve"><value>اكتب السؤال هنا...</value></data>
+	<data name="Answer1" xml:space="preserve"><value>الإجابة الأولى</value></data>
+	<data name="FirstAnswer" xml:space="preserve"><value>الإجابة الأولى</value></data>
+	<data name="Answer2" xml:space="preserve"><value>الإجابة الثانية</value></data>
+	<data name="SecondAnswer" xml:space="preserve"><value>الإجابة الثانية</value></data>
+	<data name="Answer3" xml:space="preserve"><value>الإجابة الثالثة</value></data>
+	<data name="ThirdAnswer" xml:space="preserve"><value>الإجابة الثالثة</value></data>
+	<data name="Answer4" xml:space="preserve"><value>الإجابة الرابعة</value></data>
+	<data name="FourthAnswer" xml:space="preserve"><value>الإجابة الرابعة</value></data>
+	<data name="CorrectAnswer" xml:space="preserve"><value>الإجابة الصحيحة</value></data>
+	<data name="SelectCorrectAnswer" xml:space="preserve"><value>-- اختر الإجابة الصحيحة --</value></data>
+	<data name="Level" xml:space="preserve"><value>المستوى</value></data>
+	<data name="SelectLevel" xml:space="preserve"><value>-- اختر المستوى --</value></data>
+	<data name="Category" xml:space="preserve"><value>التصنيف</value></data>
+	<data name="SelectCategory" xml:space="preserve"><value>-- اختر التصنيف --</value></data>
+	<data name="SaveQuestionBtn" xml:space="preserve"><value>حفظ السؤال</value></data>
+	<data name="EmailAddress" xml:space="preserve"><value>البريد الإلكتروني</value></data>
+	<data name="EnterEmail" xml:space="preserve"><value>أدخل البريد الإلكتروني...</value></data>
+	<data name="Password" xml:space="preserve"><value>كلمة المرور</value></data>
+	<data name="EnterPassword" xml:space="preserve"><value>أدخل كلمة المرور...</value></data>
+	<data name="RememberMe" xml:space="preserve"><value>تذكرني</value></data>
+	<data name="LoginBtn" xml:space="preserve"><value>تسجيل الدخول</value></data>
+	<data name="ForgotPassword" xml:space="preserve"><value>نسيت كلمة المرور؟</value></data>
+	<data name="NoAccount" xml:space="preserve"><value>ليس لديك حساب؟</value></data>
+	<data name="CreateAccount" xml:space="preserve"><value>إنشاء حساب</value></data>
+	<data name="BackToStart" xml:space="preserve"><value>العودة للبداية</value></data>
 </root>

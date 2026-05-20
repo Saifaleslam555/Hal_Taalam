@@ -5,19 +5,18 @@ namespace Hal_Taalam.Enums
     public enum CategoryOption
     {
         [Display(Name = "تاريخ")]
-        History = 1,
-    
-    [Display(Name = "جغرافيا")]
-        Geography = 2,
-    
-    [Display(Name = "علوم")]
-        Science = 3,
-    
-    [Display(Name = "ثقافة عامة")]
-        GeneralCulture = 4,
+        History = 5,
 
-    // 👇 القسم الجديد اللي ضفناه
-    [Display(Name = "رياضة")]
-        Sports = 5
+        [Display(Name = "جغرافيا")]
+        Geography = 6,
+
+        [Display(Name = "علوم")]
+        Science = 7,
+
+        [Display(Name = "ثقافة عامة")]
+        GeneralCulture = 8,
+
+        [Display(Name = "رياضة")]
+        Sports = 9
     }
 }

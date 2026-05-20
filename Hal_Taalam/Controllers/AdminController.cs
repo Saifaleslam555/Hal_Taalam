@@ -66,6 +66,18 @@ namespace Hal_Taalam.Controllers
             return RedirectToAction("QuestionList");
         }
 
+        public async Task<IActionResult> Edit(int id)
+        {
+            var questionVM = await adminQuestionsService.GetQuestionById(id);
+
+            if (questionVM == null)
+            {
+                return NotFound();
+            }
+
+            return View("AddQuestion", questionVM);
+        }
+
         public IActionResult Users()
         {
             return View();

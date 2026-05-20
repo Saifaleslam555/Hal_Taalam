@@ -8,6 +8,7 @@ namespace Hal_Taalam.Service.IService
         public Task<bool> CreateQuestion(CreateQuestionVM createQuestionVM);
         public Task<bool> UpdateQuestion(int QuestionId, CreateQuestionVM createQuestionVM);
         public Task<bool> DeleteQuestion(int QuestionId);
+        public Task<CreateQuestionVM> GetQuestionById(int id);
         public List<QuestionListVM> GetQuestionsList();
     }
 }

@@ -31,9 +31,9 @@ namespace Hal_Taalam
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddScoped<IQusetionRepository, QuestionRepository>();
-            builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
-            builder.Services.AddScoped<IGameResultRepository, GameResultRepository>();
+            //builder.Services.AddScoped<IQusetionRepository, QuestionRepository>();
+            //builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
+            //builder.Services.AddScoped<IGameResultRepository, GameResultRepository>();
 
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();

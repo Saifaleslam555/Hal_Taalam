@@ -179,4 +179,66 @@
 	<data name="RetryQuiz" xml:space="preserve"><value>Réessayer le quiz</value></data>
 	<data name="BackToHome" xml:space="preserve"><value>Menu principal</value></data>
 	<data name="ShareAchievement" xml:space="preserve"><value>Partagez votre réussite avec vos amis</value></data>
+	<data name="AddNewQuestionTitle" xml:space="preserve"><value>Ajouter une nouvelle question</value></data>
+	<data name="QuestionTextLabel" xml:space="preserve"><value>Texte de la question</value></data>
+	<data name="WriteQuestionPlaceholder" xml:space="preserve"><value>Écrivez la question ici...</value></data>
+	<data name="Answer1Label" xml:space="preserve"><value>Première réponse</value></data>
+	<data name="Answer2Label" xml:space="preserve"><value>Deuxième réponse</value></data>
+	<data name="Answer3Label" xml:space="preserve"><value>Troisième réponse</value></data>
+	<data name="Answer4Label" xml:space="preserve"><value>Quatrième réponse</value></data>
+	<data name="CorrectAnswerLabel" xml:space="preserve"><value>Réponse correcte</value></data>
+	<data name="SelectCorrectAnswerOpt" xml:space="preserve"><value>-- Sélectionner la réponse correcte --</value></data>
+	<data name="LevelLabel" xml:space="preserve"><value>Niveau</value></data>
+	<data name="SelectLevelOpt" xml:space="preserve"><value>-- Sélectionner le niveau --</value></data>
+	<data name="CategoryLabel" xml:space="preserve"><value>Catégorie</value></data>
+	<data name="SelectCategoryOpt" xml:space="preserve"><value>-- Sélectionner la catégorie --</value></data>
+	<data name="SaveQuestionBtnText" xml:space="preserve"><value>Enregistrer la question</value></data>
+	<data name="AddNewQuestion" xml:space="preserve"><value>Ajouter une nouvelle question</value></data>
+<data name="BackToList" xml:space="preserve"><value>Retour à la liste</value></data>
+<data name="QuestionText" xml:space="preserve"><value>Texte de la question</value></data>
+<data name="WriteQuestionHere" xml:space="preserve"><value>Écrivez la question ici...</value></data>
+<data name="Answer1" xml:space="preserve"><value>Réponse 1</value></data>
+<data name="FirstAnswer" xml:space="preserve"><value>Première réponse</value></data>
+<data name="Answer2" xml:space="preserve"><value>Réponse 2</value></data>
+<data name="SecondAnswer" xml:space="preserve"><value>Deuxième réponse</value></data>
+<data name="Answer3" xml:space="preserve"><value>Réponse 3</value></data>
+<data name="ThirdAnswer" xml:space="preserve"><value>Troisième réponse</value></data>
+<data name="Answer4" xml:space="preserve"><value>Réponse 4</value></data>
+<data name="FourthAnswer" xml:space="preserve"><value>Quatrième réponse</value></data>
+<data name="CorrectAnswer" xml:space="preserve"><value>Réponse correcte</value></data>
+<data name="SelectCorrectAnswer" xml:space="preserve"><value>-- Sélectionner la réponse correcte --</value></data>
+<data name="Level" xml:space="preserve"><value>Niveau</value></data>
+<data name="SelectLevel" xml:space="preserve"><value>-- Sélectionner le niveau --</value></data>
+<data name="Category" xml:space="preserve"><value>Catégorie</value></data>
+<data name="SelectCategory" xml:space="preserve"><value>-- Sélectionner la catégorie --</value></data>
+<data name="SaveQuestionBtn" xml:space="preserve"><value>Enregistrer la question</value></data>
+	<data name="AddNewQuestion" xml:space="preserve"><value>Ajouter une nouvelle question</value></data>
+	<data name="BackToList" xml:space="preserve"><value>Retour à la liste</value></data>
+	<data name="QuestionText" xml:space="preserve"><value>Texte de la question</value></data>
+	<data name="WriteQuestionHere" xml:space="preserve"><value>Écrivez la question ici...</value></data>
+	<data name="Answer1" xml:space="preserve"><value>Réponse 1</value></data>
+	<data name="FirstAnswer" xml:space="preserve"><value>Première réponse</value></data>
+	<data name="Answer2" xml:space="preserve"><value>Réponse 2</value></data>
+	<data name="SecondAnswer" xml:space="preserve"><value>Deuxième réponse</value></data>
+	<data name="Answer3" xml:space="preserve"><value>Réponse 3</value></data>
+	<data name="ThirdAnswer" xml:space="preserve"><value>Troisième réponse</value></data>
+	<data name="Answer4" xml:space="preserve"><value>Réponse 4</value></data>
+	<data name="FourthAnswer" xml:space="preserve"><value>Quatrième réponse</value></data>
+	<data name="CorrectAnswer" xml:space="preserve"><value>Réponse correcte</value></data>
+	<data name="SelectCorrectAnswer" xml:space="preserve"><value>-- Sélectionner la réponse correcte --</value></data>
+	<data name="Level" xml:space="preserve"><value>Niveau</value></data>
+	<data name="SelectLevel" xml:space="preserve"><value>-- Sélectionner le niveau --</value></data>
+	<data name="Category" xml:space="preserve"><value>Catégorie</value></data>
+	<data name="SelectCategory" xml:space="preserve"><value>-- Sélectionner la catégorie --</value></data>
+	<data name="SaveQuestionBtn" xml:space="preserve"><value>Enregistrer la question</value></data>
+	<data name="EmailAddress" xml:space="preserve"><value>Adresse e-mail</value></data>
+	<data name="EnterEmail" xml:space="preserve"><value>Entrez votre e-mail...</value></data>
+	<data name="Password" xml:space="preserve"><value>Mot de passe</value></data>
+	<data name="EnterPassword" xml:space="preserve"><value>Entrez votre mot de passe...</value></data>
+	<data name="RememberMe" xml:space="preserve"><value>Se souvenir de moi</value></data>
+	<data name="LoginBtn" xml:space="preserve"><value>Se connecter</value></data>
+	<data name="ForgotPassword" xml:space="preserve"><value>Mot de passe oublié ?</value></data>
+	<data name="NoAccount" xml:space="preserve"><value>Vous n'avez pas de compte ?</value></data>
+	<data name="CreateAccount" xml:space="preserve"><value>Créer un compte</value></data>
+	<data name="BackToStart" xml:space="preserve"><value>Retour au début</value></data>
 </root>
