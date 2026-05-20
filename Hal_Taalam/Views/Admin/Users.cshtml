@@ -1,30 +1,29 @@
 ﻿@{
-    ViewData["Title"] = "Manage Users";
+    ViewData["Title"] = localizer["ManageUsers"].Value;
 }
-
 <div class="dashboard-container" style="padding: 30px;">
     <div class="card-header-flex" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h2 class="card-title" style="color: #e67e22;">👥 Manage Users</h2>
-        <a asp-action="AdminDashboard" class="btn btn-outline">⬅️ Back to Dashboard</a>
+        <h2 class="card-title" style="color: #e67e22;">👥 @localizer["ManageUsers"]</h2>
+        <a asp-action="AdminDashboard" class="btn btn-outline">⬅️ @localizer["BackToDashboard"]</a>
     </div>
 
     <div class="admin-card" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
         <table class="data-table" style="width: 100%; border-collapse: collapse;">
             <thead>
                 <tr style="background: #f8f9fa; border-bottom: 2px solid #dee2e6;">
-                    <th style="padding: 12px; text-align: left;">Name / Email</th>
-                    <th style="padding: 12px; text-align: center;">Role</th>
-                    <th style="padding: 12px; text-align: center;">Games Played</th>
-                    <th style="padding: 12px; text-align: center;">Actions</th>
+                    <th style="padding: 12px; text-align: left;">@localizer["NameEmail"]</th>
+                    <th style="padding: 12px; text-align: center;">@localizer["TableRole"]</th>
+                    <th style="padding: 12px; text-align: center;">@localizer["TableGamesPlayed"]</th>
+                    <th style="padding: 12px; text-align: center;">@localizer["TableActions"]</th>
                 </tr>
             </thead>
             <tbody>
                 <tr style="border-bottom: 1px solid #eee;">
                     <td style="padding: 12px;">player1@gmail.com</td>
-                    <td style="padding: 12px; text-align: center;"><span class="badge" style="background:#28a745; color:white; padding:5px 10px; border-radius:15px;">Player</span></td>
+                    <td style="padding: 12px; text-align: center;"><span class="badge" style="background:#28a745; color:white; padding:5px 10px; border-radius:15px;">@localizer["PlayerRole"]</span></td>
                     <td style="padding: 12px; text-align: center;">15</td>
                     <td style="padding: 12px; text-align: center;">
-                        <button class="btn btn-sm btn-danger">Ban</button>
+                        <button class="btn btn-sm btn-danger">@localizer["BanBtn"]</button>
                     </td>
                 </tr>
             </tbody>

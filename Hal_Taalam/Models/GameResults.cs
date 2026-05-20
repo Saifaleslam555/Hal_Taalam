@@ -11,8 +11,9 @@ namespace Hal_Taalam.Models
 
 
 
-        [ForeignKey("playerId")]
         public int playerId { get; set; }
+        [ForeignKey("playerId")]
+
         public Player player { get; set; }
     }
 }

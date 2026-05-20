@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - Hal Taalam</title>
+    <title>@localizer["PlayerProfile"] - Hal Taalam</title>
     <link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true">
 </head>
 <body>
@@ -17,9 +17,8 @@
                 <div class="profile-logo">
                     <img src="~/Image/logo.jpg" alt="Hal Taalam Logo" />
                 </div>
-                <h1>Player Profile</h1>
-                <p>Complete your gaming profile</p>
-                <p class="arabic-text">أكمل ملفك الشخصي</p>
+                <h1>@localizer["PlayerProfileTitle"]</h1>
+                <p>@localizer["CompleteProfile"]</p>
             </div>
 
             <form asp-action="Profile" method="post" class="profile-form">
@@ -28,24 +27,24 @@
                 <div class="form-group">
                     <label asp-for="Name" class="form-label">
                         <i class="icon">👤</i>
-                        Player Name
+                        @localizer["PlayerName"]
                     </label>
-                    <input asp-for="Name" class="form-input" placeholder="Enter your player name" />
+                    <input asp-for="Name" class="form-input" placeholder="@localizer["EnterPlayerName"].Value" />
                     <span asp-validation-for="Name" class="field-validation"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="Age" class="form-label">
                         <i class="icon">🎂</i>
-                        Age
+                        @localizer["Age"]
                     </label>
-                    <input asp-for="Age" class="form-input" placeholder="Enter your age" />
+                    <input asp-for="Age" class="form-input" placeholder="@localizer["EnterAge"].Value" />
                     <span asp-validation-for="Age" class="field-validation"></span>
                 </div>
 
                 <div class="form-group">
                     <button type="submit" class="btn-submit">
-                        <span>Save Profile</span>
+                        <span>@localizer["SaveProfile"]</span>
                         <i class="btn-icon">💾</i>
                     </button>
                 </div>
@@ -53,7 +52,7 @@
 
             <div class="profile-footer">
                 <div class="back-link">
-                    <a asp-action="Index">← Back to List</a>
+                    <a asp-action="Index">← @localizer["BackToList"]</a>
                 </div>
             </div>
         </div>

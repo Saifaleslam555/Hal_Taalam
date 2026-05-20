@@ -1,13 +1,7 @@
 ﻿@{
     Layout = null;
+    ViewData["Title"] = localizer["Start"].Value;
 }
-
-
-@{
-    Layout = null; // No layout for start page
-    ViewData["Title"] = "Start";
-}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,8 +17,8 @@
 
     <a asp-controller="GameMenu" asp-action="MainMenu" class="start-link">
         <div class="start-screen">
-            <h1>Click to Start Journey</h1>
-            <p>اضغط للبدء</p>
+            <h1>@localizer["ClickToStartTitle"]</h1>
+            <p>@localizer["ClickToStartSub"]</p>
         </div>
     </a>
 

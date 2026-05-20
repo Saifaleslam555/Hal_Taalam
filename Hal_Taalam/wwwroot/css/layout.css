@@ -1,3 +1,4 @@
+/* --- الإعدادات الأساسية --- */
 * {
     margin: 0;
     padding: 0;
@@ -12,12 +13,12 @@ body {
     flex-direction: column;
 }
 
-/* Navigation Bar Styles */
+/* --- Navigation Bar --- */
 .navbar {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 2px solid #e67300;
-    padding: 15px 30px;
+    padding: 10px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,20 +28,19 @@ body {
     z-index: 1000;
 }
 
-/* Logo Section */
 .nav-logo {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.nav-logo img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid #e67300;
-    object-fit: cover;
-}
+    .nav-logo img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #e67300;
+        object-fit: cover;
+    }
 
 .game-title {
     color: #e67300;
@@ -48,53 +48,20 @@ body {
     font-weight: bold;
 }
 
-/* Center Navigation */
-.nav-center {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.nav-btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-}
-
-.nav-btn-help {
-    background-color: #17a2b8;
-    color: white;
-}
-
-.nav-btn-help:hover {
-    background-color: #138496;
-    transform: translateY(-1px);
-}
-
-.nav-btn-leaderboard {
-    background-color: #28a745;
-    color: white;
-}
-
-.nav-btn-leaderboard:hover {
-    background-color: #218838;
-    transform: translateY(-1px);
-}
-
-/* Player Info in Navbar */
-.player-nav-info {
+/* --- Player/Guest Info (The Right Side) --- */
+.nav-right {
     display: flex;
     align-items: center;
     gap: 15px;
-    background: rgba(230, 115, 0, 0.1);
-    padding: 8px 15px;
-    border-radius: 25px;
+}
+
+.player-nav-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(230, 115, 0, 0.05);
+    padding: 5px 15px;
+    border-radius: 50px;
     border: 1px solid #e67300;
 }
 
@@ -103,166 +70,97 @@ body {
     height: 40px;
     border-radius: 50%;
     border: 2px solid #e67300;
-    object-fit: cover;
-    background: linear-gradient(45deg, #ff9900, #e67300);
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #e67300;
     color: white;
     font-weight: bold;
-}
-
-.player-nav-details {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.player-nav-name {
-    font-size: 0.9rem;
-    color: #e67300;
-    font-weight: bold;
-}
-
-.player-nav-level {
-    font-size: 0.8rem;
-    color: #cc6600;
-}
-
-.player-nav-xp {
-    width: 60px;
-    height: 4px;
-    background-color: #ffe6cc;
-    border-radius: 2px;
     overflow: hidden;
 }
 
-.player-nav-xp-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #ff9900, #e67300);
-    width: 65%;
-    transition: width 0.3s ease;
+.player-nav-name {
+    font-size: 0.95rem;
+    color: #e67300;
+    font-weight: bold;
+    margin-right: 5px;
 }
 
-/* Auth Buttons */
+/* --- Auth Buttons --- */
 .auth-buttons {
     display: flex;
-    gap: 10px;
-    align-items: center;
+    gap: 8px;
+}
+
+.nav-btn {
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .btn-login {
-    background-color: #e67300;
+    background: #e67300;
     color: white;
 }
 
-.btn-login:hover {
-    background-color: #cc6600;
-    transform: translateY(-1px);
-}
+    .btn-login:hover {
+        background: #cc6600;
+    }
 
 .btn-signup {
-    background-color: transparent;
+    border-color: #e67300;
     color: #e67300;
-    border: 2px solid #e67300;
 }
 
-.btn-signup:hover {
-    background-color: #e67300;
-    color: white;
-    transform: translateY(-1px);
-}
+    .btn-signup:hover {
+        background: #e67300;
+        color: white;
+    }
 
 .btn-signout {
-    background-color: #dc3545;
+    background: #dc3545;
     color: white;
+    border: none;
 }
 
-.btn-signout:hover {
-    background-color: #c82333;
-    transform: translateY(-1px);
-}
+    .btn-signout:hover {
+        background: #c82333;
+    }
 
-/* Guest Mode in Navbar */
-.guest-nav-info {
-    background: rgba(150, 150, 150, 0.1);
-    border: 1px dashed #999;
-}
-
-.guest-nav-avatar {
-    background: linear-gradient(45deg, #ccc, #999);
-}
-
-/* Main Content */
+/* --- Footer --- */
 .main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* Footer */
 .footer {
     background: rgba(255, 255, 255, 0.8);
     border-top: 1px solid #e67300;
-    padding: 20px 0;
-    margin-top: auto;
-}
-
-.footer-content {
+    padding: 15px;
     text-align: center;
+    margin-top: auto;
     color: #666;
 }
 
-.footer-content a {
-    color: #e67300;
-    text-decoration: none;
-}
-
-.footer-content a:hover {
-    text-decoration: underline;
-}
-
-/* Mobile Responsive */
+/* --- Mobile Responsive (ظبطنا المسافات هنا) --- */
 @media (max-width: 768px) {
     .navbar {
-        flex-wrap: wrap;
-        gap: 15px;
-        padding: 10px 15px;
+        padding: 10px;
     }
-    
-    .nav-center {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        margin-top: 10px;
-    }
-    
-    .player-nav-info,
-    .auth-buttons {
-        order: 2;
-    }
-    
-    .nav-logo {
-        order: 1;
-    }
-    
-    .player-nav-details {
+
+    .player-nav-name {
         display: none;
     }
-}
+    /* بنخفي الاسم في الشاشات الصغيرة عشان المكان يكفي */
 
-@media (max-width: 480px) {
-    .auth-buttons {
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    .nav-btn {
-        padding: 6px 12px;
-        font-size: 0.8rem;
-    }
-    
-    .game-title {
-        font-size: 1.2rem;
+    .player-nav-info {
+        padding: 5px;
+        border: none; /* بنشيل البوردر في الموبايل عشان يبقى أنظف */
+        background: transparent;
     }
 }

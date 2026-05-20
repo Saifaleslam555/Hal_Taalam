@@ -31,8 +31,9 @@ namespace Hal_Taalam
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            //builder.Services.AddScoped<IQusetionRepository, QuestionRepository>();
-            //builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
+            builder.Services.AddScoped<IQusetionRepository, QuestionRepository>();
+            builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
+            builder.Services.AddScoped<IGameResultRepository, GameResultRepository>();
 
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
@@ -57,6 +58,21 @@ namespace Hal_Taalam
 
            );
 
+            builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[] { "en-US", "ar", "fr", "es" };
+
+                options.SetDefaultCulture(supportedCultures[0]) 
+                       .AddSupportedCultures(supportedCultures)
+                       .AddSupportedUICultures(supportedCultures);
+            });
+
+            builder.Services.AddControllersWithViews()
+                            .AddViewLocalization()
+                            .AddDataAnnotationsLocalization();
+
 
 
             var app = builder.Build();
@@ -77,9 +93,10 @@ namespace Hal_Taalam
             app.UseAuthentication();
 
             app.UseAuthorization();
-            
+           
             app.UseSession();
-             
+
+            app.UseRequestLocalization();
 
             app.MapControllerRoute(
                 name: "default",

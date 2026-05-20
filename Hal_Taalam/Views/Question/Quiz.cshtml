@@ -1,6 +1,10 @@
-﻿@model Hal_Taalam.ViewModel.Questions.QuizVM
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Hal_Taalam
+@inject IHtmlLocalizer<SharedResource> localizer
+@model Hal_Taalam.ViewModel.Questions.QuizVM
+
 @{
-    ViewData["Title"] = "Quiz";
+    ViewData["Title"] = localizer["QuizWord"].Value;
 }
 
 @section Styles {
@@ -8,70 +12,52 @@
 }
 
 <div class="quiz-container">
-    <!-- Progress Section -->
     <div class="quiz-progress">
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill" style="width: @(((Model.index + 1) * 100.0 / Model.total))%"></div>
         </div>
         <div class="progress-text">
-            <span class="current-question">Question <span id="currentQuestion">@(Model.index + 1)</span></span>
-            <span class="total-questions">of @Model.total</span>
+            <span class="current-question">@localizer["QuestionWord"] <span id="currentQuestion">@(Model.index + 1)</span></span>
+            <span class="total-questions">@localizer["OfWord"] @Model.total</span>
         </div>
     </div>
 
-    <!-- Question Card -->
     <div class="question-card">
         <div class="question-header">
             <div class="question-icon">❓</div>
             <h2 class="question-text" id="questionText">@Model.QuestionVM.question</h2>
         </div>
 
-        <!-- Answers Form -->
         <form asp-controller="Question" asp-action="Answer" method="post" id="quizForm">
-            <input type="hidden" asp-for="index" id="questionIndex" />
+            <input type="hidden" name="questionID" value="0" /> <input type="hidden" asp-for="index" id="questionIndex" />
 
-            <div class="answers-grid">
-                <div class="answer-option" data-answer="1">
-                    <input type="radio" id="answer1" name="selectedAnswer" value="1" class="answer-radio" />
-                    <label for="answer1" class="answer-label">
-                        <span class="answer-letter">A</span>
-                        <span class="answer-text">@Model.QuestionVM.answer1</span>
-                        <span class="answer-check">✓</span>
-                    </label>
-                </div>
+            <div class="answers-grid" style="display: flex; flex-direction: column; gap: 10px; margin: 20px 0;">
 
-                <div class="answer-option" data-answer="2">
-                    <input type="radio" id="answer2" name="selectedAnswer" value="2" class="answer-radio" />
-                    <label for="answer2" class="answer-label">
-                        <span class="answer-letter">B</span>
-                        <span class="answer-text">@Model.QuestionVM.answer2</span>
-                        <span class="answer-check">✓</span>
-                    </label>
-                </div>
+                <label class="answer-option" style="padding: 15px; border: 2px solid #ddd; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                    <input type="radio" name="selectedAnswer" value="1" required style="transform: scale(1.5);">
+                    <span style="font-size: 1.2rem;">@Model.QuestionVM.answer1</span>
+                </label>
 
-                <div class="answer-option" data-answer="3">
-                    <input type="radio" id="answer3" name="selectedAnswer" value="3" class="answer-radio" />
-                    <label for="answer3" class="answer-label">
-                        <span class="answer-letter">C</span>
-                        <span class="answer-text">@Model.QuestionVM.answer3</span>
-                        <span class="answer-check">✓</span>
-                    </label>
-                </div>
+                <label class="answer-option" style="padding: 15px; border: 2px solid #ddd; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                    <input type="radio" name="selectedAnswer" value="2" required style="transform: scale(1.5);">
+                    <span style="font-size: 1.2rem;">@Model.QuestionVM.answer2</span>
+                </label>
 
-                <div class="answer-option" data-answer="4">
-                    <input type="radio" id="answer4" name="selectedAnswer" value="4" class="answer-radio" />
-                    <label for="answer4" class="answer-label">
-                        <span class="answer-letter">D</span>
-                        <span class="answer-text">@Model.QuestionVM.answer4</span>
-                        <span class="answer-check">✓</span>
-                    </label>
-                </div>
+                <label class="answer-option" style="padding: 15px; border: 2px solid #ddd; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                    <input type="radio" name="selectedAnswer" value="3" required style="transform: scale(1.5);">
+                    <span style="font-size: 1.2rem;">@Model.QuestionVM.answer3</span>
+                </label>
+
+                <label class="answer-option" style="padding: 15px; border: 2px solid #ddd; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                    <input type="radio" name="selectedAnswer" value="4" required style="transform: scale(1.5);">
+                    <span style="font-size: 1.2rem;">@Model.QuestionVM.answer4</span>
+                </label>
+
             </div>
 
-            <!-- Submit Button -->
-            <div class="quiz-actions">
-                <button type="submit" class="btn-next" id="btnNext" disabled>
-                    <span>Next Question</span>
+            <div class="quiz-actions" style="margin-top: 20px; text-align: center;">
+                <button type="submit" class="btn-next" id="btnNext" style="padding: 10px 30px; font-size: 1.2rem; background-color: #ff9800; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    <span>@localizer["NextQuestion"]</span>
                     <span class="btn-arrow">→</span>
                 </button>
             </div>
@@ -81,4 +67,12 @@
 
 @section Scripts {
     <script src="~/js/Quiz.js" asp-append-version="true"></script>
+    <script>
+        // سكريبت بسيط عشان نفعل زرار "السؤال التالي" أول ما اليوزر يختار إجابة
+        document.querySelectorAll('input[name="selectedAnswer"]').forEach((radio) => {
+        radio.addEventListener('change', function() {
+        document.getElementById('btnNext').disabled = false;
+        });
+        });
+    </script>
 }

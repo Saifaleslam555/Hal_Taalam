@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Hal_Taalam
+@inject IHtmlLocalizer<SharedResource> localizer
+
+@{
+    ViewData["Title"] = localizer["HowToPlayTitle"].Value;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/HowToPlay.css" asp-append-version="true">
+}
+
+<div class="rules-container">
+    <h2 class="rules-title">@localizer["HowToPlayHeader"]</h2>
+
+    <div class="rule-item">
+        <div class="rule-icon">⏱️</div>
+        <div class="rule-content">
+            <h4>@localizer["Rule1Title"]</h4>
+            <p>@localizer["Rule1Description"]</p>
+        </div>
+    </div>
+
+    <div class="rule-item">
+        <div class="rule-icon">🎯</div>
+        <div class="rule-content">
+            <h4>@localizer["Rule2Title"]</h4>
+            <p>@localizer["Rule2Description"]</p>
+        </div>
+    </div>
+
+    <div class="rule-item">
+        <div class="rule-icon">🏆</div>
+        <div class="rule-content">
+            <h4>@localizer["Rule3Title"]</h4>
+            <p>@localizer["Rule3Description"]</p>
+        </div>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a asp-controller="GameMenu" asp-action="MainMenu" class="btn-back">@localizer["BackToMainMenu"]</a>
+    </div>
+</div>

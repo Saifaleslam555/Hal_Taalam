@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Hal_Taalam
+@inject IHtmlLocalizer<SharedResource> localizer
+
+@{
+    Layout = "_HTLayout";
+    ViewData["Title"] = localizer["SelectLanguage"].Value;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Language.css" asp-append-version="true">
+}
+
+<div class="container lang-container">
+    <h2 class="mb-4">@localizer["SelectLanguage"]</h2>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-3 mb-3">
+            <a asp-controller="Language" asp-action="ChangeLanguage" asp-route-culture="en-US" class="lang-card bg-en">
+                <h3 class="m-0">English</h3>
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a asp-controller="Language" asp-action="ChangeLanguage" asp-route-culture="ar" class="lang-card bg-ar">
+                <h3 class="m-0">العربية</h3>
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a asp-controller="Language" asp-action="ChangeLanguage" asp-route-culture="fr" class="lang-card bg-fr">
+                <h3 class="m-0">Français</h3>
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a asp-controller="Language" asp-action="ChangeLanguage" asp-route-culture="es" class="lang-card bg-es">
+                <h3 class="m-0">Español</h3>
+            </a>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <a href="javascript:history.back()" class="btn btn-outline-dark btn-back">⬅ @localizer["Back"]</a>
+    </div>
+</div>

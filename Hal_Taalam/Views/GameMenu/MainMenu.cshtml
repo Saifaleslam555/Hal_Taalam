@@ -1,9 +1,10 @@
-﻿@{
-    Layout = "_HTLayout";
-}
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Hal_Taalam
+@inject IHtmlLocalizer<SharedResource> localizer
 
 @{
-    ViewData["Title"] = "Main Menu";
+    Layout = "_HTLayout";
+    ViewData["Title"] = localizer["MainMenu"].Value;
 }
 
 @section Styles {
@@ -12,42 +13,41 @@
 
 <div class="menu-page-content">
     <div class="menu-container">
-        <h1>Main Menu</h1>
+        <h1>@localizer["MainMenu"]</h1>
         <div class="menu-buttons">
 
-            @* ======= التعديل هنا: زرار الأدمين يظهر فقط لو الرول Admin ======= *@
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
                 <a asp-controller="Admin" asp-action="AdminDashboard" class="btn btn-primary" style="background-color: var(--primary-red, #dc3545); border-color: #dc3545;">
-                    🛡️ Admin Dashboard
+                    🛡️ @localizer["AdminDashboard"]
                 </a>
             }
-            @* ================================================================ *@
 
-            <a asp-controller="GameMenu" asp-action="OpenQuiz" class="btn btn-primary">🎮 Start Game</a>
-            <a asp-controller="GameMenu" asp-action="HowToPlay" class="btn btn-secondary">📖 How To Play</a>
-            <a asp-controller="GameMenu" asp-action="Leaderboard" class="btn btn-secondary">🏆 Leaderboard</a>
-            <a asp-controller="GameMenu" asp-action="Settings" class="btn btn-tertiary">⚙️ Settings</a>
+            <a asp-controller="GameMenu" asp-action="OpenQuiz" class="btn btn-primary">🎮 @localizer["StartGame"]</a>
+            <a asp-controller="GameMenu" asp-action="HowToPlay" class="btn btn-secondary">📖 @localizer["HowToPlay"]</a>
+            <a asp-controller="GameMenu" asp-action="Leaderboard" class="btn btn-secondary">🏆 @localizer["Leaderboard"]</a>
+
+            <a asp-controller="Language" asp-action="Index" class="btn btn-tertiary">🌐 @localizer["SelectLanguage"]</a>
         </div>
     </div>
 
     <div class="player-stats-card" id="playerStatsCard" style="display: none;">
-        <h3>Your Progress</h3>
+        <h3>@localizer["YourProgress"]</h3>
         <div class="stats-grid">
             <div class="stat-item">
-                <span class="stat-label">Level</span>
+                <span class="stat-label">@localizer["Level"]</span>
                 <span class="stat-value" id="statsLevel">5</span>
             </div>
             <div class="stat-item">
-                <span class="stat-label">XP</span>
+                <span class="stat-label">@localizer["XP"]</span>
                 <span class="stat-value"><span id="statsCurrentXP">1300</span>/<span id="statsNextXP">2000</span></span>
             </div>
             <div class="stat-item">
-                <span class="stat-label">Games Played</span>
+                <span class="stat-label">@localizer["TableGamesPlayed"]</span>
                 <span class="stat-value" id="statsGamesPlayed">23</span>
             </div>
             <div class="stat-item">
-                <span class="stat-label">Best Score</span>
+                <span class="stat-label">@localizer["BestScore"]</span>
                 <span class="stat-value" id="statsBestScore">850</span>
             </div>
         </div>
@@ -55,7 +55,7 @@
             <div class="xp-progress-bar">
                 <div class="xp-progress-fill" id="statsXpFill"></div>
             </div>
-            <span class="xp-progress-text">Progress to Level <span id="statsNextLevel">6</span></span>
+            <span class="xp-progress-text">@localizer["ProgressToLevel"] <span id="statsNextLevel">6</span></span>
         </div>
     </div>
 </div>

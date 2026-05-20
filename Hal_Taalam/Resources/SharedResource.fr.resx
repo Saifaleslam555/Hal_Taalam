@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+	
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>1.3</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="Login" xml:space="preserve"><value>Connexion</value></data>
+	<data name="WelcomeBackTitle" xml:space="preserve"><value>Bon retour !</value></data>
+	<data name="EmailAddress" xml:space="preserve"><value>Adresse e-mail</value></data>
+	<data name="Password" xml:space="preserve"><value>Mot de passe</value></data>
+	<data name="Register" xml:space="preserve"><value>S'inscrire</value></data>
+	<data name="JoinAdventureTitle" xml:space="preserve"><value>Rejoignez l'aventure !</value></data>
+	<data name="Username" xml:space="preserve"><value>Nom d'utilisateur</value></data>
+	<data name="CreateAccount" xml:space="preserve"><value>Créer un compte</value></data>
+	<data name="AdminDashboard" xml:space="preserve"><value>Tableau de bord</value></data>
+	<data name="MainMenu" xml:space="preserve"><value>Menu principal</value></data>
+	<data name="StartGame" xml:space="preserve"><value>Démarrer le jeu</value></data>
+	<data name="HowToPlay" xml:space="preserve"><value>Comment jouer</value></data>
+	<data name="Settings" xml:space="preserve"><value>Paramètres</value></data>
+	<data name="ManageQuestions" xml:space="preserve"><value>Gérer les questions</value></data>
+	<data name="AddNewQuestionBtn" xml:space="preserve"><value>Ajouter une question</value></data>
+	<data name="SubmitAnswer" xml:space="preserve"><value>Soumettre</value></data>
+	<data name="Leaderboard" xml:space="preserve"><value>Classement</value></data>
+	<data name="SelectLanguage" xml:space="preserve"><value>Choisir la langue</value></data>
+	<data name="YourProgress" xml:space="preserve"><value>Votre progression</value></data>
+	<data name="Level" xml:space="preserve"><value>Niveau</value></data>
+	<data name="XP" xml:space="preserve"><value>XP</value></data>
+	<data name="TableGamesPlayed" xml:space="preserve"><value>Parties jouées</value></data>
+	<data name="BestScore" xml:space="preserve"><value>Meilleur score</value></data>
+	<data name="ProgressToLevel" xml:space="preserve"><value>Progression vers le niveau</value></data>
+	<data name="TotalUsers" xml:space="preserve"><value>Utilisateurs Totaux</value></data>
+	<data name="ActivePlayers" xml:space="preserve"><value>Joueurs Actifs</value></data>
+	<data name="TotalQuestions" xml:space="preserve"><value>Total des Questions</value></data>
+	<data name="InDatabase" xml:space="preserve"><value>Dans la base de données</value></data>
+	<data name="GamesPlayed" xml:space="preserve"><value>Parties Jouées</value></data>
+	<data name="TotalResults" xml:space="preserve"><value>Résultats Totaux</value></data>
+	<data name="TotalCategories" xml:space="preserve"><value>Catégories Totales</value></data>
+	<data name="AvailableSections" xml:space="preserve"><value>Sections Disponibles</value></data>
+	<data name="QuickActions" xml:space="preserve"><value>Actions Rapides</value></data>
+	<data name="QuickActionsSub" xml:space="preserve"><value>Gérez votre système</value></data>
+	<data name="Guest" xml:space="preserve"><value>Invité</value></data>
+	<data name="SignUp" xml:space="preserve"><value>S'inscrire</value></data>
+	<data name="AddQuestionAction" xml:space="preserve"><value>Ajouter une question</value></data>
+	<data name="ManageUsers" xml:space="preserve"><value>Gérer les utilisateurs</value></data>
+	<data name="ViewReports" xml:space="preserve"><value>Voir les rapports</value></data>
+	<data name="SystemStatus" xml:space="preserve"><value>État du système</value></data>
+	<data name="SystemStatusSub" xml:space="preserve"><value>Métriques en temps réel</value></data>
+	<data name="Database" xml:space="preserve"><value>Base de données</value></data>
+	<data name="Online" xml:space="preserve"><value>En ligne</value></data>
+	<data name="Server" xml:space="preserve"><value>Serveur</value></data>
+	<data name="Healthy" xml:space="preserve"><value>Sain</value></data>
+	<data name="RecentUsers" xml:space="preserve"><value>Utilisateurs récents</value></data>
+	<data name="ViewAll" xml:space="preserve"><value>Voir tout</value></data>
+	<data name="Name" xml:space="preserve"><value>Nom</value></data>
+	<data name="Email" xml:space="preserve"><value>E-mail</value></data>
+	<data name="Actions" xml:space="preserve"><value>Actions</value></data>
+	<data name="ClickToStartTitle" xml:space="preserve"><value>Bienvenue à Hal Taalam</value></data>
+	<data name="ClickToStartSub" xml:space="preserve"><value>Cliquez n'importe où pour commencer</value></data>
+	<data name="QuestionWord" xml:space="preserve"><value>Question</value></data>
+	<data name="OfWord" xml:space="preserve"><value>sur</value></data>
+	<data name="NextQuestion" xml:space="preserve"><value>Question suivante</value></data>
+	<data name="HowToPlayTitle" xml:space="preserve"><value>Comment jouer</value></data>
+	<data name="HowToPlayHeader" xml:space="preserve"><value>📜 Règles du jeu</value></data>
+	<data name="Rule1Title" xml:space="preserve"><value>Temps limité</value></data>
+	<data name="Rule1Description" xml:space="preserve"><value>Vous avez un temps limité pour chaque question. Réfléchissez vite et choisissez la bonne réponse.</value></data>
+	<data name="Rule2Title" xml:space="preserve"><value>Choisir la réponse</value></data>
+	<data name="Rule2Description" xml:space="preserve"><value>Lisez attentivement la question, puis choisissez une seule réponse parmi les 4 options disponibles.</value></data>
+	<data name="Rule3Title" xml:space="preserve"><value>Gagner des points</value></data>
+	<data name="Rule3Description" xml:space="preserve"><value>Chaque bonne réponse ajoute des points à votre score. Essayez d'atteindre le top classement !</value></data>
+	<data name="BackToMainMenu" xml:space="preserve"><value>Retour au menu principal</value></data>
+	<data name="CongratsFinished" xml:space="preserve"><value>Félicitations ! Quiz terminé</value></data>
+	<data name="QuizCompleted" xml:space="preserve"><value>Vous avez terminé toutes les questions avec succès</value></data>
+	<data name="YourScore" xml:space="preserve"><value>Votre score</value></data>
+	<data name="PerfectScore" xml:space="preserve"><value>Performance parfaite !</value></data>
+	<data name="PerfectScoreDesc" xml:space="preserve"><value>Vous avez répondu correctement à toutes les questions !</value></data>
+	<data name="ExcellentScore" xml:space="preserve"><value>Excellente performance !</value></data>
+	<data name="ExcellentScoreDesc" xml:space="preserve"><value>Très bon niveau, continuez comme ça !</value></data>
+	<data name="GoodScore" xml:space="preserve"><value>Bonne tentative !</value></data>
+	<data name="GoodScoreDesc" xml:space="preserve"><value>Vous avez bien fait, vous pouvez faire mieux !</value></data>
+	<data name="TryAgainScore" xml:space="preserve"><value>Ne vous inquiétez pas !</value></data>
+	<data name="TryAgainScoreDesc" xml:space="preserve"><value>Apprenez de vos erreurs et réessayez !</value></data>
+	<data name="CorrectWord" xml:space="preserve"><value>Correct</value></data>
+	<data name="WrongWord" xml:space="preserve"><value>Incorrect</value></data>
+	<data name="AccuracyWord" xml:space="preserve"><value>Précision</value></data>
+	<data name="RetryQuiz" xml:space="preserve"><value>Réessayer le quiz</value></data>
+	<data name="BackToHome" xml:space="preserve"><value>Menu principal</value></data>
+	<data name="ShareAchievement" xml:space="preserve"><value>Partagez votre réussite avec vos amis</value></data>
+</root>

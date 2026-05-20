@@ -1,6 +1,6 @@
 ﻿@model Hal_Taalam.ViewModel.Account.RegeisterVM
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = localizer["Register"].Value;
 }
 
 @section Styles {
@@ -13,9 +13,8 @@
             <div class="auth-logo">
                 <img src="~/Image/logo.jpg" alt="Hal Taalam Logo" />
             </div>
-            <h1>Join the Adventure!</h1>
-            <p>Create your account to start playing</p>
-            <p class="arabic-text">انضم إلى المغامرة</p>
+            <h1>@localizer["JoinAdventureTitle"]</h1>
+            <p>@localizer["JoinAdventureSub"]</p>
         </div>
 
         <form asp-action="Register" method="post" class="auth-form" asp-controller="Account">
@@ -24,52 +23,52 @@
             <div class="form-group">
                 <label asp-for="UserName" class="form-label">
                     <i class="icon">👤</i>
-                    Username
+                    @localizer["Username"]
                 </label>
-                <input asp-for="UserName" class="form-input" placeholder="Choose a username" />
+                <input asp-for="UserName" class="form-input" placeholder="@localizer["ChooseUsername"].Value" />
                 <span asp-validation-for="UserName" class="field-validation"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="Email" class="form-label">
                     <i class="icon">📧</i>
-                    Email Address
+                    @localizer["EmailAddress"]
                 </label>
-                <input asp-for="Email" class="form-input" placeholder="Enter your email" />
+                <input asp-for="Email" class="form-input" placeholder="@localizer["EnterEmail"].Value" />
                 <span asp-validation-for="Email" class="field-validation"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="Password" class="form-label">
                     <i class="icon">🔒</i>
-                    Password
+                    @localizer["Password"]
                 </label>
-                <input asp-for="Password" class="form-input" placeholder="Create a password" />
+                <input asp-for="Password" class="form-input" placeholder="@localizer["CreatePassword"].Value" />
                 <span asp-validation-for="Password" class="field-validation"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="conformidPassword" class="form-label">
                     <i class="icon">🔒</i>
-                    Confirm Password
+                    @localizer["ConfirmPassword"]
                 </label>
-                <input asp-for="conformidPassword" class="form-input" placeholder="Confirm your password" />
+                <input asp-for="conformidPassword" class="form-input" placeholder="@localizer["ConfirmYourPassword"].Value" />
                 <span asp-validation-for="conformidPassword" class="field-validation"></span>
             </div>
 
             <div class="form-group">
                 <button type="submit" class="btn-submit">
-                    <span>Create Account</span>
+                    <span>@localizer["CreateAccount"]</span>
                     <i class="btn-icon">🚀</i>
                 </button>
             </div>
         </form>
 
         <div class="auth-footer">
-            <p>Already have an account?</p>
-            <a asp-action="Login" class="switch-auth" asp-controller="Account">Login Here</a>
+            <p>@localizer["AlreadyHaveAccount"]</p>
+            <a asp-action="Login" class="switch-auth" asp-controller="Account">@localizer["LoginHere"]</a>
             <div class="back-link">
-                <a asp-controller="Home" asp-action="StartPage">← Back to Start</a>
+                <a asp-controller="Home" asp-action="StartPage">← @localizer["BackToStart"]</a>
             </div>
         </div>
     </div>

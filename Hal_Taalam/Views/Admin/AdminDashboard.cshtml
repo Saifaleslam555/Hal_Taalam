@@ -1,8 +1,7 @@
-﻿@* تعريف الـ ViewModel الخاص بالصفحة *@
-@model Hal_Taalam.ViewModel.Admin.AdminDashboardVM
+﻿@model Hal_Taalam.ViewModel.Admin.AdminDashboardVM
 
 @{
-    ViewData["Title"] = "Admin Dashboard";
+    ViewData["Title"] = localizer["AdminDashboard"].Value;
 }
 
 @section Styles {
@@ -12,13 +11,13 @@
 <div class="dashboard-container">
     <div class="dashboard-header">
         <div class="header-content">
-            <h1 class="dashboard-title">Admin Dashboard</h1>
-            <p class="dashboard-subtitle">لوحة التحكم</p>
+            <h1 class="dashboard-title">@localizer["AdminDashboard"]</h1>
+            <p class="dashboard-subtitle">@localizer["ControlPanel"]</p>
         </div>
         <div class="header-actions">
             <button class="btn-header" id="refreshBtn">
                 <span class="btn-icon">🔄</span>
-                <span>Refresh</span>
+                <span>@localizer["Refresh"]</span>
             </button>
         </div>
     </div>
@@ -28,8 +27,8 @@
             <div class="stat-icon">👥</div>
             <div class="stat-content">
                 <h3 class="stat-value">@Model.PlayersCount</h3>
-                <p class="stat-label">Total Users</p>
-                <span class="stat-change positive">Active Players</span>
+                <p class="stat-label">@localizer["TotalUsers"]</p>
+                <span class="stat-change positive">@localizer["ActivePlayers"]</span>
             </div>
         </div>
 
@@ -37,8 +36,8 @@
             <div class="stat-icon">📝</div>
             <div class="stat-content">
                 <h3 class="stat-value">@Model.QuestionsCount</h3>
-                <p class="stat-label">Total Questions</p>
-                <span class="stat-change positive">In Database</span>
+                <p class="stat-label">@localizer["TotalQuestions"]</p>
+                <span class="stat-change positive">@localizer["InDatabase"]</span>
             </div>
         </div>
 
@@ -46,8 +45,8 @@
             <div class="stat-icon">🎮</div>
             <div class="stat-content">
                 <h3 class="stat-value">@Model.GamesCount</h3>
-                <p class="stat-label">Games Played</p>
-                <span class="stat-change positive">Total Results</span>
+                <p class="stat-label">@localizer["GamesPlayed"]</p>
+                <span class="stat-change positive">@localizer["TotalResults"]</span>
             </div>
         </div>
 
@@ -55,8 +54,8 @@
             <div class="stat-icon">📂</div>
             <div class="stat-content">
                 <h3 class="stat-value">@Model.CategoriesCount</h3>
-                <p class="stat-label">Total Categories</p>
-                <span class="stat-change positive">Available Sections</span>
+                <p class="stat-label">@localizer["TotalCategories"]</p>
+                <span class="stat-change positive">@localizer["AvailableSections"]</span>
             </div>
         </div>
     </div>
@@ -64,28 +63,28 @@
     <div class="content-grid">
         <div class="dashboard-card quick-actions-card">
             <div class="card-header">
-                <h2 class="card-title">Quick Actions</h2>
-                <p class="card-subtitle">إجراءات سريعة</p>
+                <h2 class="card-title">@localizer["QuickActions"]</h2>
+                <p class="card-subtitle">@localizer["QuickActionsSub"]</p>
             </div>
             <div class="card-body">
                 <div class="actions-grid">
                     <a asp-controller="Admin" asp-action="AddQuestion" class="action-btn">
                         <span class="action-icon">➕</span>
-                        <span class="action-text">Add Question</span>
+                        <span class="action-text">@localizer["AddQuestionAction"]</span>
                     </a>
 
                     <a asp-controller="Admin" asp-action="QuestionList" class="action-btn">
                         <span class="action-icon">📝</span>
-                        <span class="action-text">Manage Questions</span>
+                        <span class="action-text">@localizer["ManageQuestions"]</span>
                     </a>
 
                     <a asp-controller="Admin" asp-action="Users" class="action-btn">
                         <span class="action-icon">👤</span>
-                        <span class="action-text">Manage Users</span>
+                        <span class="action-text">@localizer["ManageUsers"]</span>
                     </a>
                     <a asp-controller="Admin" asp-action="Reports" class="action-btn">
                         <span class="action-icon">📈</span>
-                        <span class="action-text">View Reports</span>
+                        <span class="action-text">@localizer["ViewReports"]</span>
                     </a>
                 </div>
             </div>
@@ -93,20 +92,20 @@
 
         <div class="dashboard-card status-card">
             <div class="card-header">
-                <h2 class="card-title">System Status</h2>
-                <p class="card-subtitle">حالة النظام</p>
+                <h2 class="card-title">@localizer["SystemStatus"]</h2>
+                <p class="card-subtitle">@localizer["SystemStatusSub"]</p>
             </div>
             <div class="card-body">
                 <div class="status-list">
                     <div class="status-item">
                         <div class="status-indicator @(Model.IsDatabaseOnline ? "online" : "warning")"></div>
-                        <span class="status-label">Database</span>
-                        <span class="status-value">@(Model.IsDatabaseOnline ? "Online" : "Offline")</span>
+                        <span class="status-label">@localizer["Database"]</span>
+                        <span class="status-value">@(Model.IsDatabaseOnline ? localizer["Online"].Value : localizer["Offline"].Value)</span>
                     </div>
                     <div class="status-item">
                         <div class="status-indicator online"></div>
-                        <span class="status-label">Server</span>
-                        <span class="status-value">Healthy</span>
+                        <span class="status-label">@localizer["Server"]</span>
+                        <span class="status-value">@localizer["Healthy"]</span>
                     </div>
                 </div>
             </div>
@@ -116,17 +115,17 @@
     <div class="tables-section">
         <div class="dashboard-card table-card">
             <div class="card-header">
-                <h2 class="card-title">Recent Users</h2>
-                <a asp-controller="Admin" asp-action="Users" class="view-all-link">View All →</a>
+                <h2 class="card-title">@localizer["RecentUsers"]</h2>
+                <a asp-controller="Admin" asp-action="Users" class="view-all-link">@localizer["ViewAll"] →</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Actions</th>
+                                <th>@localizer["Name"]</th>
+                                <th>@localizer["Email"]</th>
+                                <th>@localizer["Actions"]</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -143,18 +142,13 @@
                                                 <span>@player.Name</span>
                                             </div>
                                         </td>
-                                        @* <td>@player.Email</td>
-                                        <td>
-                                            <button class="table-action-btn">👁️</button>
-                                            <button class="table-action-btn">✏️</button>
-                                        </td> *@
                                     </tr>
                                 }
                             }
                             else
                             {
                                 <tr>
-                                    <td colspan="3" style="text-align: center;">لا يوجد لاعبين متاحين حالياً.</td>
+                                    <td colspan="3" style="text-align: center;">@localizer["NoPlayersAvailable"]</td>
                                 </tr>
                             }
                         </tbody>

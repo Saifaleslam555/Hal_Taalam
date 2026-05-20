@@ -8,33 +8,33 @@ using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Hal_Taalam.Data;
+using Hal_Taalam.Repository.UnitOfWork;
 
 namespace Hal_Taalam.Controllers
 {
     [Authorize]
     public class QuestionController : Controller
     {
-        private readonly IQusetionRepository qusetionRepository;
-        private readonly IPlayerRepository playerRepository;
+        private readonly IUnitOfWork unitOfWork;
+
+        //private readonly IQusetionRepository qusetionRepository;
+        //private readonly IPlayerRepository playerRepository;
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IGameResultRepository gameResultRepository;
+        //private readonly IGameResultRepository gameResultRepository;
 
         //private readonly Question question;
 
-        public QuestionController(IQusetionRepository qusetionRepository,
-            IPlayerRepository playerRepository,
-            UserManager<ApplicationUser> userManager,
-            IGameResultRepository gameResultRepository)
+        public QuestionController(IUnitOfWork unitOfWork,
+            UserManager<ApplicationUser> userManager
+            )
         {
-            this.qusetionRepository = qusetionRepository;
-            this.playerRepository = playerRepository;
+            this.unitOfWork = unitOfWork;
             this.userManager = userManager;
-            this.gameResultRepository = gameResultRepository;
         }
 
         public IActionResult StartQuiz()
         {
-            List<Question> questions = qusetionRepository.GetRandomQuestion();
+            List<Question> questions = unitOfWork.Question.GetRandomQuestion();
 
             HttpContext.Session.SetObjectAsJson("Questions",questions);
             HttpContext.Session.SetInt32("index", 0);
@@ -106,13 +106,44 @@ namespace Hal_Taalam.Controllers
 
         }
 
-        public async Task<IActionResult> Result() 
+        //public async Task<IActionResult> Result() 
+        //{
+        //    int? Score = HttpContext.Session.GetInt32("Score");
+        //    var question = HttpContext.Session.GetOjectFromJson<List<Question>>("Questions");
+        //    //  int? total = HttpContext.Session.GetInt32("Total");
+
+        //    int total = question?.Count ??0;
+
+
+
+        //    ResultVM resultVM = new ResultVM();
+
+        //    resultVM.Total = total;
+        //    resultVM.Score = Score;
+
+        //    string userid= userManager.GetUserId(User);
+
+        //    var gamaResult = new GameResults();
+        //    gamaResult.playerId = int.Parse(userid);
+        //    gamaResult.score = Score ?? 0;
+        //    gamaResult.PlayerName = User.Identity.Name;
+        //    gamaResult.DatePlayed= DateTime.Now;
+
+        //    await unitOfWork.GameResult.Add(gamaResult);
+
+
+        //    await unitOfWork.Player.UpdateStats(resultVM.Score,userid);
+
+        //    return View("Result",resultVM);
+        //}
+
+        public async Task<IActionResult> Result()
         {
             int? Score = HttpContext.Session.GetInt32("Score");
             var question = HttpContext.Session.GetOjectFromJson<List<Question>>("Questions");
             //  int? total = HttpContext.Session.GetInt32("Total");
 
-            int total = question?.Count ??0;
+            int total = question?.Count ?? 0;
 
 
 
@@ -121,20 +152,11 @@ namespace Hal_Taalam.Controllers
             resultVM.Total = total;
             resultVM.Score = Score;
 
-            string userid= userManager.GetUserId(User);
+            string userid = userManager.GetUserId(User);
 
-            var gamaResult = new GameResults();
-            gamaResult.playerId = int.Parse(userid);
-            gamaResult.score = Score ?? 0;
-            gamaResult.PlayerName = User.Identity.Name;
-            gamaResult.DatePlayed= DateTime.Now;
-            
-            gameResultRepository.Add(gamaResult);
+            await unitOfWork.Player.UpdateStats(resultVM.Score, userid);
 
-
-            await playerRepository.UpdateStats(resultVM.Score,userid);
-
-            return View("Result",resultVM);
+            return View("Result", resultVM);
         }
     }
 }

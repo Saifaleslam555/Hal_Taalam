@@ -1,24 +1,23 @@
 ﻿@{
-    ViewData["Title"] = "System Reports";
+    ViewData["Title"] = localizer["SystemReports"].Value;
 }
-
 <div class="dashboard-container" style="padding: 30px;">
     <div class="card-header-flex" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h2 class="card-title" style="color: #e67e22;">📈 System Reports</h2>
-        <a asp-action="AdminDashboard" class="btn btn-outline">⬅️ Back to Dashboard</a>
+        <h2 class="card-title" style="color: #e67e22;">📈 @localizer["SystemReports"]</h2>
+        <a asp-action="AdminDashboard" class="btn btn-outline">⬅️ @localizer["BackToDashboard"]</a>
     </div>
 
     <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
         <div class="stat-card" style="background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <h3>Most Played Category</h3>
-            <h2 style="color: #007bff; margin-top: 10px;">Sports</h2>
+            <h3>@localizer["MostPlayedCategory"]</h3>
+            <h2 style="color: #007bff; margin-top: 10px;">@localizer["SportsCat"]</h2>
         </div>
         <div class="stat-card" style="background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <h3>Hardest Question ID</h3>
+            <h3>@localizer["HardestQuestionID"]</h3>
             <h2 style="color: #dc3545; margin-top: 10px;">#14</h2>
         </div>
         <div class="stat-card" style="background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <h3>Average Player Score</h3>
+            <h3>@localizer["AveragePlayerScore"]</h3>
             <h2 style="color: #28a745; margin-top: 10px;">75%</h2>
         </div>
     </div>

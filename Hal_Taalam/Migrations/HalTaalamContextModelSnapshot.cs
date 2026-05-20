@@ -126,7 +126,11 @@ namespace Hal_Taalam.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("playerId")
+                    b.Property<string>("playerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("playerId1")
                         .HasColumnType("int");
 
                     b.Property<int>("score")
@@ -134,7 +138,7 @@ namespace Hal_Taalam.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("playerId");
+                    b.HasIndex("playerId1");
 
                     b.ToTable("GameResults");
                 });
@@ -364,7 +368,7 @@ namespace Hal_Taalam.Migrations
                 {
                     b.HasOne("Hal_Taalam.Models.Player", "player")
                         .WithMany("GameResults")
-                        .HasForeignKey("playerId")
+                        .HasForeignKey("playerId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

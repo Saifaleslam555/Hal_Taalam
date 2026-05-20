@@ -1,11 +1,10 @@
 ﻿@model Hal_Taalam.ViewModel.Admin.CreateQuestionVM
 
 @{
-    // بنقرأ الـ ID من الرابط لمعرفة إذا كنا في حالة تعديل أو إضافة
     var routeId = ViewContext.RouteData.Values["id"];
     bool isEditMode = routeId != null;
 
-    ViewData["Title"] = isEditMode ? "Edit Question" : "Add New Question";
+    ViewData["Title"] = isEditMode ? localizer["EditQuestion"].Value : localizer["AddNewQuestion"].Value;
 }
 
 @section Styles {
@@ -15,8 +14,8 @@
 <div class="questions-container">
     <div class="admin-card">
         <div class="card-header-flex">
-            <h2 class="card-title">@(isEditMode ? "Edit Question" : "Add New Question")</h2>
-            <a asp-action="QuestionList" class="btn btn-outline">⬅️ Back to List</a>
+            <h2 class="card-title">@(isEditMode ? localizer["EditQuestion"].Value : localizer["AddNewQuestion"].Value)</h2>
+            <a asp-action="QuestionList" class="btn btn-outline">⬅️ @localizer["BackToList"]</a>
         </div>
 
         <form asp-controller="Admin" asp-action="@(isEditMode ? "UpdateQuestion" : "CreationQuestion")" method="post">
@@ -27,36 +26,21 @@
             }
 
             <div class="form-group">
-                <label class="form-label">Question Text</label>
-                <textarea asp-for="Question" class="form-control" rows="3" placeholder="اكتب السؤال هنا..." required></textarea>
+                <label class="form-label">@localizer["QuestionText"]</label>
+                <textarea asp-for="Question" class="form-control" rows="3" placeholder="@localizer["WriteQuestionHere"].Value" required></textarea>
             </div>
 
             <div class="form-row">
                 <div class="form-col">
                     <div class="form-group">
-                        <label class="form-label">Answer 1</label>
-                        <input asp-for="Answer1" class="form-control" placeholder="الإجابة الأولى" required />
+                        <label class="form-label">@localizer["Answer1"]</label>
+                        <input asp-for="Answer1" class="form-control" placeholder="@localizer["FirstAnswer"].Value" required />
                     </div>
                 </div>
                 <div class="form-col">
                     <div class="form-group">
-                        <label class="form-label">Answer 2</label>
-                        <input asp-for="Answer2" class="form-control" placeholder="الإجابة الثانية" required />
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="form-label">Answer 3</label>
-                        <input asp-for="Answer3" class="form-control" placeholder="الإجابة الثالثة" required />
-                    </div>
-                </div>
-                <div class="form-col">
-                    <div class="form-group">
-                        <label class="form-label">Answer 4</label>
-                        <input asp-for="Answer4" class="form-control" placeholder="الإجابة الرابعة" required />
+                        <label class="form-label">@localizer["Answer2"]</label>
+                        <input asp-for="Answer2" class="form-control" placeholder="@localizer["SecondAnswer"].Value" required />
                     </div>
                 </div>
             </div>
@@ -64,27 +48,42 @@
             <div class="form-row">
                 <div class="form-col">
                     <div class="form-group">
-                        <label class="form-label">Correct Answer</label>
+                        <label class="form-label">@localizer["Answer3"]</label>
+                        <input asp-for="Answer3" class="form-control" placeholder="@localizer["ThirdAnswer"].Value" required />
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">@localizer["Answer4"]</label>
+                        <input asp-for="Answer4" class="form-control" placeholder="@localizer["FourthAnswer"].Value" required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label class="form-label">@localizer["CorrectAnswer"]</label>
                         <select asp-for="CorrectAnswer" asp-items="Html.GetEnumSelectList<Hal_Taalam.Enums.CorrectAnswerOption>()" class="form-control" required>
-                            <option value="" disabled selected>-- حدد الإجابة الصحيحة --</option>
+                            <option value="" disabled selected>-- @localizer["SelectCorrectAnswer"] --</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-col">
                     <div class="form-group">
-                        <label class="form-label">Level</label>
+                        <label class="form-label">@localizer["Level"]</label>
                         <select asp-for="Level" asp-items="Html.GetEnumSelectList<Hal_Taalam.Enums.QuestionLevel>()" class="form-control" required>
-                            <option value="" disabled selected>-- اختر المستوى --</option>
+                            <option value="" disabled selected>-- @localizer["SelectLevel"] --</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-col">
                     <div class="form-group">
-                        <label class="form-label">Category</label>
+                        <label class="form-label">@localizer["Category"]</label>
                         <select asp-for="Category" asp-items="Html.GetEnumSelectList<Hal_Taalam.Enums.CategoryOption>()" class="form-control" required>
-                            <option value="" disabled selected>-- اختر القسم --</option>
+                            <option value="" disabled selected>-- @localizer["SelectCategory"] --</option>
                         </select>
                     </div>
                 </div>
@@ -92,7 +91,7 @@
 
             <div style="margin-top: 30px; text-align: right;">
                 <button type="submit" class="btn btn-primary" style="padding: 12px 30px; font-size: 1.1em;">
-                    @(isEditMode ? "🆙 Update Question" : "💾 Save Question")
+                    @(isEditMode ? "🆙 " + localizer["UpdateQuestionBtn"].Value : "💾 " + localizer["SaveQuestionBtn"].Value)
                 </button>
             </div>
         </form>
